@@ -2,8 +2,11 @@ name: PUBG News
 
 on:
   schedule:
-    - cron: '*/15 * * * *'  # 每15min执行一次
-  workflow_dispatch:       # 允许手动触发
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   pubg-news:
@@ -11,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: 3.11
 
@@ -29,19 +32,12 @@ jobs:
         run: python pubg_news.py
 
       - name: Commit updated news files
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
-
-          git pull --rebase --autostash
-
           git add news_*.json
-
           if git diff --cached --quiet; then
-            echo "✅ No news updates to commit."
+            echo "No news updates to commit."
           else
             git commit -m "Update news"
             git push
