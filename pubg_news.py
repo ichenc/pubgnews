@@ -183,9 +183,9 @@ def send_feishu(news):
     # 根据分类选择卡片头部颜色
     category = (news.get("category") or "").lower()
     color_map = {
-        "event": "orange",        # 活动
-        "notice": "red",           # 公告/维护
-        "update": "blue",          # 更新
+        "event": "orange",
+        "notice": "red",
+        "update": "blue",
         "announcement": "turquoise",
         "news": "wathet"
     }
@@ -197,7 +197,7 @@ def send_feishu(news):
     # 分类标签
     if news.get("category"):
         elements.append({
-            "tag": "markdown",
+            "tag": "lark_md",
             "content": f"**分类：** {news['category']}"
         })
 
@@ -206,7 +206,7 @@ def send_feishu(news):
     if summary:
         elements.append({"tag": "divider"})
         elements.append({
-            "tag": "markdown",
+            "tag": "lark_md",
             "content": summary[:500]
         })
 
@@ -215,16 +215,16 @@ def send_feishu(news):
     if display_time:
         elements.append({"tag": "divider"})
         elements.append({
-            "tag": "markdown",
+            "tag": "lark_md",
             "content": f"📅 **发布时间：** {display_time}"
         })
 
-    # 封面图（飞书卡片 img 需要 img_key，外链图片直接用 markdown 图片语法）
+    # 封面图
     image_url = news.get("imageUrl", "")
     if image_url:
         elements.append({"tag": "divider"})
         elements.append({
-            "tag": "markdown",
+            "tag": "lark_md",
             "content": f"![封面]({image_url})"
         })
 
@@ -265,7 +265,6 @@ def send_feishu(news):
     try:
         resp = requests.post(FEISHU_WEBHOOK_URL, json=payload, timeout=15)
         result = resp.json()
-        # 飞书返回 code=0 或 StatusCode=0 表示成功
         if result.get("code") == 0 or result.get("StatusCode") == 0:
             log(f"✅ 飞书推送成功：{news['title']}")
             return True
