@@ -23,7 +23,9 @@ jobs:
 
       - name: Run script
         env:
-          BARK_PUSH_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          FEISHU_SECRET: ${{ secrets.FEISHU_SECRET }}
+          PUSH_LANG: "zh-cn"
         run: python pubg_news.py
 
       - name: Commit updated news files
