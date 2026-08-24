@@ -171,16 +171,10 @@ def merge_news(existing, new):
 # ============================================================
 
 def send_feishu(news):
-    """
-    发送飞书交互式卡片消息
-    news: 单条新闻字典
-    返回 True/False
-    """
     if not FEISHU_WEBHOOK_URL:
         log("⚠️ 未配置 FEISHU_WEBHOOK_URL，跳过推送")
         return False
 
-    # 根据分类选择卡片头部颜色
     category = (news.get("category") or "").lower()
     color_map = {
         "event": "orange",
@@ -191,14 +185,13 @@ def send_feishu(news):
     }
     header_color = color_map.get(category, "orange")
 
-    # 构建卡片元素
     elements = []
 
     # 分类标签
     if news.get("category"):
         elements.append({
-            "tag": "lark_md",
-            "content": f"**分类：** {news['category']}"
+            "tag": "div",
+            "text": {"tag": "lark_md", "content": f"**分类：** {news['category']}"}
         })
 
     # 摘要
@@ -206,8 +199,8 @@ def send_feishu(news):
     if summary:
         elements.append({"tag": "divider"})
         elements.append({
-            "tag": "lark_md",
-            "content": summary[:500]
+            "tag": "div",
+            "text": {"tag": "lark_md", "content": summary[:500]}
         })
 
     # 发布时间
@@ -215,8 +208,8 @@ def send_feishu(news):
     if display_time:
         elements.append({"tag": "divider"})
         elements.append({
-            "tag": "lark_md",
-            "content": f"📅 **发布时间：** {display_time}"
+            "tag": "div",
+            "text": {"tag": "lark_md", "content": f"📅 **发布时间：** {display_time}"}
         })
 
     # 封面图
@@ -224,8 +217,8 @@ def send_feishu(news):
     if image_url:
         elements.append({"tag": "divider"})
         elements.append({
-            "tag": "lark_md",
-            "content": f"![封面]({image_url})"
+            "tag": "div",
+            "text": {"tag": "lark_md", "content": f"![封面]({image_url})"}
         })
 
     # 查看详情按钮
@@ -240,7 +233,6 @@ def send_feishu(news):
         }]
     })
 
-    # 组装卡片
     payload = {
         "msg_type": "interactive",
         "card": {
@@ -255,13 +247,11 @@ def send_feishu(news):
         }
     }
 
-    # 签名校验
     if FEISHU_SECRET:
         timestamp = str(int(time.time()))
         payload["timestamp"] = timestamp
         payload["sign"] = gen_feishu_sign(FEISHU_SECRET, timestamp)
 
-    # 发送
     try:
         resp = requests.post(FEISHU_WEBHOOK_URL, json=payload, timeout=15)
         result = resp.json()
