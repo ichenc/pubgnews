@@ -175,78 +175,51 @@ def send_feishu(news):
         log("⚠️ 未配置 FEISHU_WEBHOOK_URL，跳过推送")
         return False
 
-    category = (news.get("category") or "").lower()
-    color_map = {
-        "event": "orange",
-        "notice": "red",
-        "update": "blue",
-        "announcement": "turquoise",
-        "news": "wathet"
-    }
-    header_color = color_map.get(category, "orange")
+    # 组装富文本内容（每行一个数组）
+    content_lines = []
 
-    elements = []
+    # 标题行
+    content_lines.append([
+        {"tag": "text", "text": f"标题：{news['title']}"}
+    ])
 
-    # 分类标签
+    # 分类
     if news.get("category"):
-        elements.append({
-            "tag": "div",
-            "text": {"tag": "lark_md", "content": f"**分类：** {news['category']}"}
-        })
+        content_lines.append([
+            {"tag": "text", "text": f"分类：{news['category']}"}
+        ])
 
     # 摘要
     summary = (news.get("summary") or "").strip()
     if summary:
-        elements.append({"tag": "divider"})
-        elements.append({
-            "tag": "div",
-            "text": {"tag": "lark_md", "content": summary[:500]}
-        })
+        content_lines.append([
+            {"tag": "text", "text": f"摘要：{summary[:300]}"}
+        ])
 
     # 发布时间
-    display_time = news.get("displayTime", "")
-    if display_time:
-        elements.append({"tag": "divider"})
-        elements.append({
-            "tag": "div",
-            "text": {"tag": "lark_md", "content": f"📅 **发布时间：** {display_time}"}
-        })
+    if news.get("displayTime"):
+        content_lines.append([
+            {"tag": "text", "text": f"时间：{news['displayTime']}"}
+        ])
 
-    # 封面图
-    image_url = news.get("imageUrl", "")
-    if image_url:
-        elements.append({"tag": "divider"})
-        elements.append({
-            "tag": "div",
-            "text": {"tag": "lark_md", "content": f"![封面]({image_url})"}
-        })
-
-    # 查看详情按钮
-    elements.append({"tag": "divider"})
-    elements.append({
-        "tag": "action",
-        "actions": [{
-            "tag": "button",
-            "text": {"tag": "plain_text", "content": "👉 查看官网详情"},
-            "url": news["newsUrl"],
-            "type": "primary"
-        }]
-    })
+    # 跳转链接
+    content_lines.append([
+        {"tag": "a", "text": "👉 点击查看官网详情", "href": news["newsUrl"]}
+    ])
 
     payload = {
-        "msg_type": "interactive",
-        "card": {
-            "header": {
-                "title": {
-                    "tag": "plain_text",
-                    "content": f"{PUSH_TITLE}：{news['title']}"
-                },
-                "template": header_color
-            },
-            "elements": elements
+        "msg_type": "post",
+        "content": {
+            "post": {
+                "zh_cn": {
+                    "title": PUSH_TITLE,
+                    "content": content_lines
+                }
+            }
         }
     }
 
+    # 签名校验
     if FEISHU_SECRET:
         timestamp = str(int(time.time()))
         payload["timestamp"] = timestamp
