@@ -9,6 +9,7 @@ GitHub Actions 定时运行，无需自建服务器
 import requests
 import json
 import os
+import re
 import sys
 import time
 import hmac
@@ -55,6 +56,26 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # PUBG 官网 API（无需 API Key，公开接口）
 PUBG_API = "https://api-foc.krafton.com/content/post/news"
+
+# ============================================================
+#  微博（KRAFTON_GAME 官微）配置
+# ============================================================
+# 是否抓取微博停机维护公告（默认开启，设为 false 关闭）
+ENABLE_WEIBO = os.getenv("ENABLE_WEIBO", "true").lower() in ("1", "true", "yes")
+
+# KRAFTON_GAME 官微 UID（https://weibo.com/u/6037906900）
+WEIBO_UID = os.getenv("WEIBO_UID", "6037906900")
+
+# 新浪移动媒体页（服务端渲染，无需登录/cookie）
+WEIBO_MEDIA_URL = f"https://www.sina.cn/media/{WEIBO_UID}"
+
+# 仅推送正文包含以下任意关键词的微博（逗号分隔）
+# 默认聚焦"维护公告"，需要热补丁/维护结束通知可追加：热补丁,停机维护已结束
+_weibo_kw_env = os.getenv("WEIBO_KEYWORDS", "维护公告")
+WEIBO_KEYWORDS = [k.strip() for k in _weibo_kw_env.split(",") if k.strip()]
+
+# 微博数据在本地缓存里使用的虚拟语言标识（对应 news_weibo.json）
+WEIBO_LANG = "weibo"
 
 # ============================================================
 #  工具函数
@@ -133,6 +154,98 @@ def fetch_news(lang):
 
 
 # ============================================================
+#  KRAFTON 官微（sina.cn 移动页）拉取
+# ============================================================
+
+def _clean_html(text):
+    """去掉 HTML 标签和微博里的零宽字符 / 多余空白"""
+    text = re.sub(r"<[^>]+>", "", text)
+    text = text.replace("\u200b", "").replace("\u200c", "").replace("\u200d", "")
+    text = text.replace("\xa0", " ").strip()
+    return re.sub(r"\s+", " ", text)
+
+
+def _extract_weibo_title(body):
+    """
+    从微博正文里提取标题：
+    优先取【...】里的内容，否则取前 30 个字符
+    """
+    m = re.match(r"^[【\[](.+?)[】\]]", body)
+    if m:
+        return m.group(1).strip()
+    return body[:30].strip()
+
+
+def fetch_weibo():
+    """
+    抓取 KRAFTON_GAME 官微最新微博，过滤出含维护类关键词的条目。
+    返回与官网 fetch_news 相同结构的列表，postId 用新浪详情页 oid。
+    """
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) "
+            "AppleWebKit/605.1.15 (KHTML, like Gecko) "
+            "Version/15.0 Mobile/15E148 Safari/604.1"
+        )
+    }
+    resp = requests.get(WEIBO_MEDIA_URL, headers=headers, timeout=30)
+    resp.raise_for_status()
+    # 新浪移动页返回 utf-8
+    html = resp.content.decode("utf-8", errors="ignore")
+
+    # 每条微博结构：
+    # <a class="post-link" href="/news/detail/{oid}.html">
+    #   <article class="post"> ...
+    #     <div class="time">2026-09-22 15:00<span ...>来自 ...</span></div>
+    #     <div class="post-text">正文...</div>
+    #   </article>
+    # </a>
+    pattern = re.compile(
+        r'<a class="post-link" href="(/news/detail/(\d+)\.html)"[^>]*>'
+        r".*?<div class=\"time\">([^<]+)<span"
+        r".*?<div class=\"post-text\">(.*?)</div>",
+        re.S,
+    )
+
+    news_items = []
+    seen_oids = set()
+    for m in pattern.finditer(html):
+        href, oid, time_str, raw_body = m.groups()
+        oid = oid.strip()
+        if oid in seen_oids:
+            continue
+        seen_oids.add(oid)
+
+        body = _clean_html(raw_body)
+        # 关键词过滤：只保留维护类公告
+        if not any(kw in body for kw in WEIBO_KEYWORDS):
+            continue
+
+        # 时间统一成 "YYYY-MM-DD HH:MM:SS"
+        display_time = time_str.strip()
+        if len(display_time) == 16:  # "2026-09-22 15:00"
+            display_time += ":00"
+
+        news_items.append({
+            "title": _extract_weibo_title(body),
+            "summary": body,
+            "postId": oid,
+            "category": "weibo",
+            "labels": ["weibo"],
+            "createdAt": display_time,
+            "displayTime": display_time,
+            "imageUrl": "",
+            "thumbUrl": "",
+            "newsUrl": f"https://www.sina.cn{href}",
+            "source": "微博 · KRAFTON_GAME",
+        })
+
+    # 按时间倒序，最多保留 SIZE 条
+    news_items.sort(key=lambda x: x["displayTime"], reverse=True)
+    return news_items[:SIZE]
+
+
+# ============================================================
 #  本地缓存（json 文件，跨运行保留已推送记录）
 # ============================================================
 
@@ -183,10 +296,11 @@ def send_feishu(news):
         {"tag": "text", "text": f"标题：{news['title']}"}
     ])
 
-    # 分类
-    if news.get("category"):
+    # 分类 / 来源
+    source = news.get("source") or news.get("category")
+    if source:
         content_lines.append([
-            {"tag": "text", "text": f"分类：{news['category']}"}
+            {"tag": "text", "text": f"来源：{source}"}
         ])
 
     # 摘要
@@ -202,9 +316,10 @@ def send_feishu(news):
             {"tag": "text", "text": f"时间：{news['displayTime']}"}
         ])
 
-    # 跳转链接
+    # 跳转链接（官网/微博文案区分）
+    link_text = "👉 查看微博原文" if news.get("source") else "👉 点击查看官网详情"
     content_lines.append([
-        {"tag": "a", "text": "👉 点击查看官网详情", "href": news["newsUrl"]}
+        {"tag": "a", "text": link_text, "href": news["newsUrl"]}
     ])
 
     payload = {
@@ -254,7 +369,11 @@ def push_new_news(existing, new, lang):
         log("⚠️ 未配置飞书 Webhook，跳过推送环节")
         return 0
 
-    if lang != PUSH_LANG:
+    # 官网语言按 PUSH_LANG 过滤；微博（weibo）只要开关开启就推送
+    if lang == WEIBO_LANG:
+        if not ENABLE_WEIBO:
+            return 0
+    elif lang != PUSH_LANG:
         return 0
 
     # 已保存的 postId 集合
@@ -302,6 +421,7 @@ def main():
     log(f"📡 推送语言：{PUSH_LANG or '（未设置，不推送）'}")
     log(f"🔑 飞书 Webhook：{'已配置' if FEISHU_WEBHOOK_URL else '未配置'}")
     log(f"📝 排除关键词：{EXCLUDE_KEYWORDS}")
+    log(f"📱 微博抓取：{'已开启（UID ' + WEIBO_UID + '，关键词=' + str(WEIBO_KEYWORDS) + '）' if ENABLE_WEIBO else '已关闭'}")
     log("=" * 50)
 
     total_pushed = 0
@@ -332,6 +452,26 @@ def main():
         # 4. 合并并保存（无论是否推送都更新缓存）
         merged_news = merge_news(existing_news, new_news)
         save_news(lang, merged_news)
+
+    # ---------------- 微博维护公告 ----------------
+    if ENABLE_WEIBO:
+        log(f"\n--- 处理微博：KRAFTON_GAME（{WEIBO_UID}）---")
+        existing_weibo = load_existing(WEIBO_LANG)
+        log(f"📂 微博缓存 {len(existing_weibo)} 条")
+
+        try:
+            new_weibo = fetch_weibo()
+            log(f"📡 微博拉取 {len(new_weibo)} 条维护类公告")
+        except Exception as e:
+            # 微博失败不影响官网主流程
+            log(f"❌ 微博拉取失败（已跳过，不影响官网）：{e}")
+            new_weibo = []
+
+        if new_weibo:
+            pushed = push_new_news(existing_weibo, new_weibo, WEIBO_LANG)
+            total_pushed += pushed
+            merged_weibo = merge_news(existing_weibo, new_weibo)
+            save_news(WEIBO_LANG, merged_weibo)
 
     log("\n" + "=" * 50)
     log(f"🏁 执行完成，本次共推送 {total_pushed} 条新公告")
