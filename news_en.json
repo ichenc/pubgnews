@@ -1,5 +1,19 @@
 [
     {
+        "title": "PUBG Asia Stars Web Event Reward Notice",
+        "summary": "Notice regarding the Winner Prediction Event rewards ",
+        "postId": 11177,
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-09-30 07:27:25",
+        "displayTime": "2026-09-30 09:00:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "newsUrl": "https://pubg.com/en/news/11177"
+    },
+    {
         "title": "PUBG: BATTLEGROUNDS Weekly Bans Notice (09/21~09/27)",
         "summary": "",
         "postId": 11173,
@@ -133,20 +147,5 @@
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260901/YJ0xlIvU.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260901/YJ0xlIvU_thumb.jpg",
         "newsUrl": "https://pubg.com/en/news/10991"
-    },
-    {
-        "title": "PUBG: BATTLEGROUNDS Weekly Bans Notice (08/24~08/30)",
-        "summary": "",
-        "postId": 11018,
-        "category": "notice",
-        "labels": [
-            "label_pc",
-            "label_console"
-        ],
-        "createdAt": "2026-08-31 06:24:21",
-        "displayTime": "2026-09-02 07:00:00",
-        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260831/srApa9sD.jpg",
-        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260831/srApa9sD_thumb.jpg",
-        "newsUrl": "https://pubg.com/en/news/11018"
     }
 ]
