@@ -3,12 +3,12 @@
     "maintenance": 1,
     "server_status": 1,
     "client_version": "2610.1.1.65",
-    "online": 604863
+    "online": 488529
   },
   "console": {
     "maintenance": 1,
     "client_version": "2609.2.1.33"
   },
-  "updated_at": "2026-10-16T12:21:46Z",
-  "saved_at": "2026-10-16 12:22:03"
+  "updated_at": "2026-10-16T16:49:16Z",
+  "saved_at": "2026-10-16 16:49:18"
 }
