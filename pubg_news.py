@@ -299,90 +299,65 @@ def fetch_pubg_status():
     return body.get("data", {})
 
 
-def _status_label(maintenance, server_status):
-    """根据 maintenance / server_status 字段生成中文状态描述"""
-    if maintenance == 1:
-        return "维护中"
-    if server_status == 0:
-        return "离线"
-    return "正常"
-
-
-def _status_emoji(maintenance, server_status):
-    if maintenance == 1:
-        return "🟡"
-    if server_status == 0:
-        return "🔴"
-    return "🟢"
-
-
 def check_status_change(old, new):
     """
-    对比新旧状态，返回需要推送的消息列表（每条是 send_feishu 兼容的 dict）。
+    对比新旧 PC 服务器状态，返回需要推送的消息列表（每条是 send_feishu 兼容的 dict）。
     old 为 None/空表示首次运行，不推送任何消息（只记录基线）。
+    只监控 PC 平台；主机（console）状态不监控。
     """
     if not old:
         return []
 
     messages = []
-    platforms = [
-        ("pc", "PC"),
-        ("console", "主机"),
-    ]
+    old_p = old.get("pc") or {}
+    new_p = new.get("pc") or {}
+    if not new_p:
+        return []
 
-    for key, label in platforms:
-        old_p = old.get(key) or {}
-        new_p = new.get(key) or {}
-        if not new_p:
-            continue
+    old_m = old_p.get("maintenance")
+    new_m = new_p.get("maintenance")
+    old_s = old_p.get("server_status")
+    new_s = new_p.get("server_status")
+    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    ts = int(time.time())
 
-        old_m = old_p.get("maintenance")
-        new_m = new_p.get("maintenance")
-        old_s = old_p.get("server_status")
-        new_s = new_p.get("server_status")
+    # 维护状态变化
+    if old_m != new_m and old_m is not None:
+        if new_m == 1:
+            title = "🟡 PUBG PC 服务器进入维护"
+            summary = "PUBG PC 服务器已开始维护，预计维护期间无法登录/匹配。"
+        else:
+            title = "🟢 PUBG PC 服务器维护结束"
+            summary = "PUBG PC 服务器维护已结束，可以重新启动客户端进入游戏。"
+        if new_p.get("online"):
+            summary += f" 当前在线人数：{new_p['online']}。"
+        messages.append({
+            "title": title,
+            "summary": summary,
+            "postId": f"status_pc_maint_{new_m}_{ts}",
+            "category": "status",
+            "source": "服务器状态 · pubg.plus",
+            "displayTime": now_str,
+            "newsUrl": "https://pubg.plus/zh-CN/status",
+        })
 
-        # 维护状态变化
-        if old_m != new_m and old_m is not None:
-            if new_m == 1:
-                title = f"{label} 服务器进入维护"
-                emoji = "🟡"
-                summary = f"PUBG {label} 服务器已开始维护，预计维护期间无法登录/匹配。"
-            else:
-                title = f"{label} 服务器维护结束"
-                emoji = "🟢"
-                summary = f"PUBG {label} 服务器维护已结束，可以重新启动客户端进入游戏。"
-            # 附带在线人数 / 版本
-            if new_p.get("online"):
-                summary += f" 当前在线人数：{new_p['online']}。"
-            messages.append({
-                "title": f"{emoji} {title}",
-                "summary": summary,
-                "postId": f"status_{key}_maint_{new_m}_{int(time.time())}",
-                "category": "status",
-                "source": "服务器状态 · pubg.plus",
-                "displayTime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "newsUrl": "https://pubg.plus/zh-CN/status",
-            })
-
-        # 连接状态变化（仅 PC 有 server_status 字段）
-        if new_s is not None and old_s != new_s and old_s is not None:
-            if new_s == 0:
-                title = f"{label} 服务器连接中断"
-                emoji = "🔴"
-                summary = f"PUBG {label} 服务器连接状态异常（可能崩溃或网络波动），请稍后重试。"
-            else:
-                title = f"{label} 服务器连接恢复"
-                emoji = "🟢"
-                summary = f"PUBG {label} 服务器连接已恢复。"
-            messages.append({
-                "title": f"{emoji} {title}",
-                "summary": summary,
-                "postId": f"status_{key}_conn_{new_s}_{int(time.time())}",
-                "category": "status",
-                "source": "服务器状态 · pubg.plus",
-                "displayTime": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                "newsUrl": "https://pubg.plus/zh-CN/status",
-            })
+    # 连接状态变化
+    if new_s is not None and old_s != new_s and old_s is not None:
+        if new_s == 0:
+            title = "🔴 PUBG PC 服务器连接中断"
+            summary = "PUBG PC 服务器连接状态异常（可能崩溃或网络波动），请稍后重试。"
+        else:
+            title = "🟢 PUBG PC 服务器连接恢复"
+            summary = "PUBG PC 服务器连接已恢复。"
+        messages.append({
+            "title": title,
+            "summary": summary,
+            "postId": f"status_pc_conn_{new_s}_{ts}",
+            "category": "status",
+            "source": "服务器状态 · pubg.plus",
+            "displayTime": now_str,
+            "newsUrl": "https://pubg.plus/zh-CN/status",
+        })
 
     return messages
 
@@ -400,19 +375,15 @@ def load_status_state():
 
 
 def save_status_state(state):
-    """保存当前服务器状态"""
+    """保存当前 PC 服务器状态（只存对比需要的字段）"""
     filename = os.path.join(SCRIPT_DIR, STATUS_CACHE_FILE)
-    # 只保存需要对比的字段，不存在线历史等大数组
+    pc = state.get("pc") or {}
     slim = {
         "pc": {
-            "maintenance": (state.get("pc") or {}).get("maintenance"),
-            "server_status": (state.get("pc") or {}).get("server_status"),
-            "client_version": (state.get("pc") or {}).get("client_version"),
-            "online": (state.get("pc") or {}).get("online"),
-        },
-        "console": {
-            "maintenance": (state.get("console") or {}).get("maintenance"),
-            "client_version": (state.get("console") or {}).get("client_version"),
+            "maintenance": pc.get("maintenance"),
+            "server_status": pc.get("server_status"),
+            "client_version": pc.get("client_version"),
+            "online": pc.get("online"),
         },
         "updated_at": state.get("updated_at", ""),
         "saved_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -650,18 +621,17 @@ def main():
             merged_weibo = merge_news(existing_weibo, new_weibo)
             save_news(WEIBO_LANG, merged_weibo)
 
-    # ---------------- 服务器实时状态 ----------------
+    # ---------------- 服务器实时状态（仅 PC） ----------------
     if ENABLE_STATUS:
-        log(f"\n--- 处理服务器状态（pubg.plus）---")
+        log(f"\n--- 处理 PC 服务器状态（pubg.plus）---")
         old_state = load_status_state()
         try:
             new_state = fetch_pubg_status()
             pc = new_state.get("pc") or {}
-            console = new_state.get("console") or {}
             log(
                 f"📡 PC: maintenance={pc.get('maintenance')} "
-                f"conn={pc.get('server_status')} online={pc.get('online')} | "
-                f"主机: maintenance={console.get('maintenance')}"
+                f"conn={pc.get('server_status')} online={pc.get('online')} "
+                f"ver={pc.get('client_version')}"
             )
         except Exception as e:
             log(f"❌ 服务器状态拉取失败（已跳过）：{e}")
