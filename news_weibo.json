@@ -1,5 +1,20 @@
 [
     {
+        "title": "Steam 连接故障公告",
+        "summary": "【Steam 连接故障公告】 玩家们大家好，目前 Steam 平台整体服务发生故障，导致登录及访问游戏出现问题。 我们正在关注情况，并将及时确认服务恢复进展。问题解决后，我们将再次同步。 对于给您带来的不便，我们深表歉意。感谢您的支持与理解！ #krafton#",
+        "postId": "5358646902653520",
+        "category": "weibo",
+        "labels": [
+            "weibo"
+        ],
+        "createdAt": "2026-10-26 20:41:00",
+        "displayTime": "2026-10-26 20:41:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "newsUrl": "https://www.sina.cn/news/detail/5358646902653520.html",
+        "source": "微博 · KRAFTON_GAME"
+    },
+    {
         "title": "正式服不停机维护公告",
         "summary": "【正式服不停机维护公告】 玩家们大家好，我们将在本周三10点开始正式服的不停机维护。 -维护开始时间： 北京时间2026年10月21日（星期三）10点 -维护内容： 1. 修复了在第一人称视角（FPP）下查看宾利内饰时，方向盘标志显示异常的问题。 2. 修复了在 PC 端使用 1728x1080 分辨率时，背包中的推荐道",
         "postId": "5356110006981272",
@@ -15,6 +30,51 @@
         "source": "微博 · KRAFTON_GAME"
     },
     {
+        "title": "热补丁修复通知",
+        "summary": "【热补丁修复通知】 玩家们大家好，我们于早前完成了对于游戏过程中偶尔出现画面卡顿或操作延迟问题的热补丁修复。 若在一定时间内未能完成更新，游戏可能会自动断开连接。请您关闭游戏后完成更新，再重新登录游戏。 对此带来的不便，我们深表歉意。感谢您的支持与理解！ #krafton#",
+        "postId": "5354648489692295",
+        "category": "weibo",
+        "labels": [
+            "weibo"
+        ],
+        "createdAt": "2026-10-16 14:12:00",
+        "displayTime": "2026-10-16 14:12:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "newsUrl": "https://www.sina.cn/news/detail/5354648489692295.html",
+        "source": "微博 · KRAFTON_GAME"
+    },
+    {
+        "title": "热补丁修复通知",
+        "summary": "【热补丁修复通知】 玩家们大家好，我们对于游戏内以下问题进行了热补丁修复：街机模式“SLB：荣都破晓者”中，汽油桶无法拾取，导致游戏无法继续的问题。 对此带来的不便，我们深表歉意。感谢您的支持与理解！ #krafton#",
+        "postId": "5354332506557699",
+        "category": "weibo",
+        "labels": [
+            "weibo"
+        ],
+        "createdAt": "2026-10-15 17:16:00",
+        "displayTime": "2026-10-15 17:16:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "newsUrl": "https://www.sina.cn/news/detail/5354332506557699.html",
+        "source": "微博 · KRAFTON_GAME"
+    },
+    {
+        "title": "今日停机维护已结束，请重启客户端获取更新。#krafton#",
+        "summary": "今日停机维护已结束，请重启客户端获取更新。#krafton#",
+        "postId": "5353954150979208",
+        "category": "weibo",
+        "labels": [
+            "weibo"
+        ],
+        "createdAt": "2026-10-14 16:13:00",
+        "displayTime": "2026-10-14 16:13:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "newsUrl": "https://www.sina.cn/news/detail/5353954150979208.html",
+        "source": "微博 · KRAFTON_GAME"
+    },
+    {
         "title": "正式服停机维护公告",
         "summary": "【正式服停机维护公告】 各位玩家大家好，我们将在本周三8点开始正式服的停机维护。 - 维护开始时间：北京时间10月14日（星期三）8点（预计维护时长9小时） - 维护内容： 43.2版本更新内容实装正式服 维护结束后，请各位玩家重新启动Steam客户端获取更新。 注：开服时间可能会根据具体情况进行调整。",
         "postId": "5353573291397722",
@@ -27,6 +87,21 @@
         "imageUrl": "",
         "thumbUrl": "",
         "newsUrl": "https://www.sina.cn/news/detail/5353573291397722.html",
+        "source": "微博 · KRAFTON_GAME"
+    },
+    {
+        "title": "热补丁修复通知",
+        "summary": "【热补丁修复通知】 玩家们大家好，我们于早前完成了用于提升服务器稳定性的热补丁修复。 若在一定时间内未能完成更新，游戏可能会自动断开连接。请您关闭游戏后完成更新，再重新登录游戏。 对此带来的不便，我们深表歉意。感谢您的支持与理解！ #krafton#",
+        "postId": "5353186089240461",
+        "category": "weibo",
+        "labels": [
+            "weibo"
+        ],
+        "createdAt": "2026-10-12 13:21:00",
+        "displayTime": "2026-10-12 13:21:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "newsUrl": "https://www.sina.cn/news/detail/5353186089240461.html",
         "source": "微博 · KRAFTON_GAME"
     },
     {
@@ -60,63 +135,18 @@
         "source": "微博 · KRAFTON_GAME"
     },
     {
-        "title": "正式服停机维护公告",
-        "summary": "【正式服停机维护公告】 各位玩家大家好，我们将在本周三8点开始正式服的停机维护。 - 维护开始时间：2026年9月23日（星期三）8点（预计维护时长4小时） - 维护内容：修复了在特定情况下玩家使用踢击时可以移动的问题 维护结束后，请各位玩家重新启动Steam客户端获取更新。 注：开服时间可能会根据具",
-        "postId": "5345963146742674",
+        "title": "今日停机维护已结束，请重启客户端获取更新。#krafton#",
+        "summary": "今日停机维护已结束，请重启客户端获取更新。#krafton#",
+        "postId": "5346280261813005",
         "category": "weibo",
         "labels": [
             "weibo"
         ],
-        "createdAt": "2026-09-22 15:00:00",
-        "displayTime": "2026-09-22 15:00:00",
+        "createdAt": "2026-09-23 11:53:00",
+        "displayTime": "2026-09-23 11:53:00",
         "imageUrl": "",
         "thumbUrl": "",
-        "newsUrl": "https://www.sina.cn/news/detail/5345963146742674.html",
-        "source": "微博 · KRAFTON_GAME"
-    },
-    {
-        "title": "正式服不停机维护公告",
-        "summary": "【正式服不停机维护公告】 玩家们大家好，我们将在本周三10点开始正式服的不停机维护。 -维护开始时间： 北京时间2026年9月16日（星期三）10点 -维护内容： 1.修复了荣都地图起始点的玩家角色出现在地面以下水中的问题。 2.修复了在某些情况下，交互偶尔无法正常进行的问题。 3.修复了反复切换“战绩",
-        "postId": "5343426431944626",
-        "category": "weibo",
-        "labels": [
-            "weibo"
-        ],
-        "createdAt": "2026-09-15 15:00:00",
-        "displayTime": "2026-09-15 15:00:00",
-        "imageUrl": "",
-        "thumbUrl": "",
-        "newsUrl": "https://www.sina.cn/news/detail/5343426431944626.html",
-        "source": "微博 · KRAFTON_GAME"
-    },
-    {
-        "title": "正式服停机维护公告",
-        "summary": "【正式服停机维护公告】 各位玩家大家好，我们将在本周四8点开始正式服的停机维护。 - 维护开始时间：北京时间 9月10日（星期四）8点（预计维护时长9小时） - 维护内容： 43.1版本更新内容实装正式服 维护结束后，请各位玩家重新启动Steam客户端获取更新。 注：开服时间可能会根据具体情况进行调整。",
-        "postId": "5340889716884426",
-        "category": "weibo",
-        "labels": [
-            "weibo"
-        ],
-        "createdAt": "2026-09-08 15:00:00",
-        "displayTime": "2026-09-08 15:00:00",
-        "imageUrl": "",
-        "thumbUrl": "",
-        "newsUrl": "https://www.sina.cn/news/detail/5340889716884426.html",
-        "source": "微博 · KRAFTON_GAME"
-    },
-    {
-        "title": "正式服不停机维护公告",
-        "summary": "【正式服不停机维护公告】 玩家们大家好，我们将在本周三10点开始正式服的不停机维护。 -维护开始时间： 北京时间2026年9月2日（星期三）10点 -维护内容： 1.服务器稳定性维护 2.修复了装备特定库佩 RB 皮肤后，在游戏内打开皮肤应用列表时，该皮肤图标未显示的问题 对于更新维护带来的不便，敬请谅",
-        "postId": "5338353001563134",
-        "category": "weibo",
-        "labels": [
-            "weibo"
-        ],
-        "createdAt": "2026-09-01 15:00:00",
-        "displayTime": "2026-09-01 15:00:00",
-        "imageUrl": "",
-        "thumbUrl": "",
-        "newsUrl": "https://www.sina.cn/news/detail/5338353001563134.html",
+        "newsUrl": "https://www.sina.cn/news/detail/5346280261813005.html",
         "source": "微博 · KRAFTON_GAME"
     }
 ]
