@@ -70,8 +70,9 @@ WEIBO_UID = os.getenv("WEIBO_UID", "6037906900")
 WEIBO_MEDIA_URL = f"https://www.sina.cn/media/{WEIBO_UID}"
 
 # 仅推送正文包含以下任意关键词的微博（逗号分隔）
-# 默认聚焦"维护公告"，需要热补丁/维护结束通知可追加：热补丁,停机维护已结束
-_weibo_kw_env = os.getenv("WEIBO_KEYWORDS", "维护公告")
+# 默认覆盖：维护公告 / 故障公告 / 登录异常 / 服务器波动等紧急通知
+_weibo_kw_env = os.getenv("WEIBO_KEYWORDS",
+    "维护公告,故障公告,连接故障,登录异常,服务器异常,服务器维护,停机,热补丁")
 WEIBO_KEYWORDS = [k.strip() for k in _weibo_kw_env.split(",") if k.strip()]
 
 # 微博数据在本地缓存里使用的虚拟语言标识（对应 news_weibo.json）
