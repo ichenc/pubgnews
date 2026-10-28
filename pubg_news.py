@@ -301,9 +301,14 @@ def fetch_pubg_status():
 
 def check_status_change(old, new):
     """
-    对比新旧 PC 服务器状态，返回需要推送的消息列表（每条是 send_feishu 兼容的 dict）。
+    对比新旧 PC 服务器状态，返回需要推送的消息列表。
     old 为 None/空表示首次运行，不推送任何消息（只记录基线）。
-    只监控 PC 平台；主机（console）状态不监控。
+
+    pubg.plus 状态枚举（从实际返回反推）：
+      maintenance / server_status:
+        0 = 离线/异常
+        1 = 正常在线
+        2 = 维护中
     """
     if not old:
         return []
@@ -321,12 +326,17 @@ def check_status_change(old, new):
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     ts = int(time.time())
 
-    # 维护状态变化
-    if old_m != new_m and old_m is not None:
-        if new_m == 1:
+    # 只有已知枚举值才参与对比，None/异常值不触发
+    valid = (0, 1, 2)
+
+    # ---- 维护状态变化（仅在 1=正常 ↔ 2=维护中 之间切换时推送）----
+    if (old_m in valid and new_m in valid
+            and old_m != new_m
+            and {old_m, new_m} == {1, 2}):
+        if new_m == 2:
             title = "🟡 PUBG PC 服务器进入维护"
             summary = "PUBG PC 服务器已开始维护，预计维护期间无法登录/匹配。"
-        else:
+        else:  # new_m == 1，从维护中恢复
             title = "🟢 PUBG PC 服务器维护结束"
             summary = "PUBG PC 服务器维护已结束，可以重新启动客户端进入游戏。"
         if new_p.get("online"):
@@ -341,8 +351,11 @@ def check_status_change(old, new):
             "newsUrl": "https://pubg.plus/zh-CN/status",
         })
 
-    # 连接状态变化
-    if new_s is not None and old_s != new_s and old_s is not None:
+    # ---- 连接状态变化（仅在 1=正常 ↔ 0=离线 之间切换时推送；
+    #      维护期间 server_status=2 属于正常现象，不单独推送）----
+    if (old_s in valid and new_s in valid
+            and old_s != new_s
+            and {old_s, new_s} == {0, 1}):
         if new_s == 0:
             title = "🔴 PUBG PC 服务器连接中断"
             summary = "PUBG PC 服务器连接状态异常（可能崩溃或网络波动），请稍后重试。"
@@ -463,8 +476,14 @@ def send_feishu(news):
             {"tag": "text", "text": f"时间：{news['displayTime']}"}
         ])
 
-    # 跳转链接（官网/微博文案区分）
-    link_text = "👉 查看微博原文" if news.get("source") else "👉 点击查看官网详情"
+    # 跳转链接：按来源类型区分文案
+    category = news.get("category", "")
+    if category == "weibo":
+        link_text = "👉 查看微博原文"
+    elif category == "status":
+        link_text = "👉 查看状态面板"
+    else:
+        link_text = "👉 点击查看官网详情"
     content_lines.append([
         {"tag": "a", "text": link_text, "href": news["newsUrl"]}
     ])
