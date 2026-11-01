@@ -12,10 +12,11 @@ import os
 import re
 import sys
 import time
+import html as html_lib
 import hmac
 import hashlib
 import base64
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 # ============================================================
 #  配置区（GitHub Actions 部署时全部通过 Secrets 环境变量传入）
@@ -54,6 +55,23 @@ PUSH_TITLE = os.getenv("PUSH_TITLE", "🎮 PUBG 新公告")
 # 脚本所在目录
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# 北京时间（GitHub Actions 运行环境默认是 UTC，
+# 不统一时区会导致状态推送时间戳、日志时间与微博时间混用）
+TZ_CN = timezone(timedelta(hours=8))
+
+
+def now_cn():
+    """当前北京时间（中国无夏令时，固定 UTC+8）"""
+    return datetime.now(TZ_CN)
+
+
+# HTTP 会话复用（同一进程内所有请求共享连接池，减少握手开销）
+SESSION = requests.Session()
+
+# 网络请求失败重试次数与退避基数（实际等待 backoff^attempt 秒）
+HTTP_RETRIES = int(os.getenv("HTTP_RETRIES", "3"))
+HTTP_BACKOFF = 2
+
 # PUBG 官网 API（无需 API Key，公开接口）
 PUBG_API = "https://api-foc.krafton.com/content/post/news"
 
@@ -70,9 +88,11 @@ WEIBO_UID = os.getenv("WEIBO_UID", "6037906900")
 WEIBO_MEDIA_URL = f"https://www.sina.cn/media/{WEIBO_UID}"
 
 # 仅推送正文包含以下任意关键词的微博（逗号分隔）
-# 默认覆盖：维护公告 / 故障公告 / 登录异常 / 服务器波动等紧急通知
+# 原则：凡是"服务不可用或即将不可用"的公告都必须命中，
+#       包括提前预告（停机维护公告）和事后通知（维护结束/故障修复）
 _weibo_kw_env = os.getenv("WEIBO_KEYWORDS",
-    "维护公告,故障公告,连接故障,登录异常,服务器异常,服务器维护,停机,热补丁")
+    "维护公告,故障公告,连接故障,登录异常,服务器异常,服务器维护,停机,热补丁,"
+    "紧急维护,临时维护,服务器波动,网络波动,无法登录,掉线,排队,维护结束,已恢复")
 WEIBO_KEYWORDS = [k.strip() for k in _weibo_kw_env.split(",") if k.strip()]
 
 # 微博数据在本地缓存里使用的虚拟语言标识（对应 news_weibo.json）
@@ -97,9 +117,29 @@ STATUS_CACHE_FILE = "pubg_status_state.json"
 # ============================================================
 
 def log(msg):
-    """打印带时间戳的日志"""
-    time_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    """打印带时间戳的日志（北京时间）"""
+    time_str = now_cn().strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{time_str}] {msg}", flush=True)
+
+
+def http_get(url, retries=HTTP_RETRIES, backoff=HTTP_BACKOFF, **kwargs):
+    """
+    带重试的 GET 请求（指数退避）。
+    GitHub Actions 网络偶发抖动，单次失败就跳过整轮会导致漏抓。
+    """
+    last_exc = None
+    for attempt in range(1, retries + 1):
+        try:
+            resp = SESSION.get(url, **kwargs)
+            resp.raise_for_status()
+            return resp
+        except Exception as e:
+            last_exc = e
+            if attempt < retries:
+                wait = backoff ** attempt
+                log(f"⚠️ 请求失败（第 {attempt}/{retries} 次），{wait}s 后重试：{e}")
+                time.sleep(wait)
+    raise last_exc
 
 
 def gen_feishu_sign(secret, timestamp):
@@ -141,8 +181,7 @@ def fetch_news(lang):
         "page": 1
     }
 
-    resp = requests.get(PUBG_API, headers=headers, params=params, timeout=30)
-    resp.raise_for_status()
+    resp = http_get(PUBG_API, headers=headers, params=params, timeout=30)
 
     posts = resp.json().get("_embedded", {}).get("post", [])
     news_items = []
@@ -151,18 +190,19 @@ def fetch_news(lang):
         images = post.get("images") or []
         image_url = images[0].get("imageUrl", "") if images else ""
         thumb_url = images[0].get("thumbUrl", "") if images else ""
+        post_id = str(post.get("postId", ""))
 
         news_items.append({
             "title": post.get("title", ""),
             "summary": post.get("summary", ""),
-            "postId": post.get("postId", ""),
+            "postId": post_id,
             "category": post.get("category", ""),
             "labels": post.get("labels", []),
             "createdAt": post.get("createdAt", ""),
             "displayTime": post.get("displayStartTime", ""),
             "imageUrl": image_url,
             "thumbUrl": thumb_url,
-            "newsUrl": f"https://pubg.com/{lang}/news/{post.get('postId', '')}"
+            "newsUrl": f"https://pubg.com/{lang}/news/{post_id}"
         })
 
     return news_items[:SIZE]
@@ -173,7 +213,8 @@ def fetch_news(lang):
 # ============================================================
 
 def _clean_html(text):
-    """去掉 HTML 标签和微博里的零宽字符 / 多余空白"""
+    """去掉 HTML 标签、反转义实体、微博里的零宽字符 / 多余空白"""
+    text = html_lib.unescape(text)  # &quot; &amp; &nbsp; 等
     text = re.sub(r"<[^>]+>", "", text)
     text = text.replace("\u200b", "").replace("\u200c", "").replace("\u200d", "")
     text = text.replace("\xa0", " ").strip()
@@ -203,8 +244,7 @@ def fetch_weibo():
             "Version/15.0 Mobile/15E148 Safari/604.1"
         )
     }
-    resp = requests.get(WEIBO_MEDIA_URL, headers=headers, timeout=30)
-    resp.raise_for_status()
+    resp = http_get(WEIBO_MEDIA_URL, headers=headers, timeout=30)
     # 新浪移动页返回 utf-8
     html = resp.content.decode("utf-8", errors="ignore")
 
@@ -225,7 +265,7 @@ def fetch_weibo():
     news_items = []
     seen_oids = set()
     for m in pattern.finditer(html):
-        href, oid, time_str, raw_body = m.groups()
+        _href, oid, time_str, raw_body = m.groups()
         oid = oid.strip()
         if oid in seen_oids:
             continue
@@ -236,10 +276,14 @@ def fetch_weibo():
         if not any(kw in body for kw in WEIBO_KEYWORDS):
             continue
 
-        # 时间统一成 "YYYY-MM-DD HH:MM:SS"
+        # 时间统一成 "YYYY-MM-DD HH:MM:SS"。
+        # 防御：若页面返回相对时间（如 "3分钟前"）等无法解析的格式，
+        # 直接丢弃该条目，否则字符串排序会错乱，导致推送逻辑误判
         display_time = time_str.strip()
-        if len(display_time) == 16:  # "2026-09-22 15:00"
-            display_time += ":00"
+        if not re.match(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$", display_time):
+            log(f"⏭️ 微博时间格式异常，跳过该条：{display_time} | {body[:30]}")
+            continue
+        display_time += ":00"
 
         news_items.append({
             "title": _extract_weibo_title(body),
@@ -251,7 +295,8 @@ def fetch_weibo():
             "displayTime": display_time,
             "imageUrl": "",
             "thumbUrl": "",
-            "newsUrl": f"https://www.sina.cn{href}",
+            # 微博原文（移动端分享页），而不是抓取源新浪聚合页
+            "newsUrl": f"https://m.weibo.cn/status/{oid}",
             "source": "微博 · KRAFTON_GAME",
         })
 
@@ -287,13 +332,12 @@ def fetch_pubg_status():
         "Origin": "https://pubg.plus",
         "Referer": "https://pubg.plus/",
     }
-    resp = requests.get(
+    resp = http_get(
         PUBG_STATUS_API,
         params={"ts": ts, "sign": sign},
         headers=headers,
         timeout=20,
     )
-    resp.raise_for_status()
     body = resp.json()
     if body.get("code") != 0:
         raise RuntimeError(f"状态 API 返回错误：{body.get('message')}")
@@ -324,7 +368,7 @@ def check_status_change(old, new):
     new_m = new_p.get("maintenance")
     old_s = old_p.get("server_status")
     new_s = new_p.get("server_status")
-    now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now_str = now_cn().strftime("%Y-%m-%d %H:%M:%S")
     ts = int(time.time())
 
     # 只有已知枚举值才参与对比，None/异常值不触发
@@ -400,7 +444,7 @@ def save_status_state(state):
             "online": pc.get("online"),
         },
         "updated_at": state.get("updated_at", ""),
-        "saved_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "saved_at": now_cn().strftime("%Y-%m-%d %H:%M:%S"),
     }
     with open(filename, "w", encoding="utf-8") as f:
         json.dump(slim, f, ensure_ascii=False, indent=2)
@@ -411,15 +455,23 @@ def save_status_state(state):
 # ============================================================
 
 def load_existing(lang):
-    """读取已保存的新闻列表（用于对比增量）"""
+    """读取已保存的新闻列表（用于对比增量），并做旧格式兼容迁移"""
     filename = os.path.join(SCRIPT_DIR, f"news_{lang}.json")
+    items = []
     if os.path.exists(filename):
         try:
             with open(filename, "r", encoding="utf-8") as f:
-                return json.load(f)
+                items = json.load(f)
         except Exception:
             return []
-    return []
+
+    for item in items:
+        # 历史缓存中官网 postId 是 int，统一为字符串，避免去重时类型不一致
+        item["postId"] = str(item.get("postId", ""))
+        # 旧数据微博链接指向抓取源（新浪聚合页），迁移为微博原文链接
+        if item.get("category") == "weibo" and "sina.cn" in item.get("newsUrl", ""):
+            item["newsUrl"] = f"https://m.weibo.cn/status/{item['postId']}"
+    return items
 
 
 def save_news(lang, news_items):
@@ -431,10 +483,10 @@ def save_news(lang, news_items):
 
 
 def merge_news(existing, new):
-    """合并新旧新闻，去重，按时间倒序，保留最新 SIZE 条"""
-    existing_map = {item["postId"]: item for item in existing}
+    """合并新旧新闻，去重（postId 统一按字符串比较），按时间倒序，保留最新 SIZE 条"""
+    existing_map = {str(item["postId"]): item for item in existing}
     for item in new:
-        existing_map[item["postId"]] = item
+        existing_map[str(item["postId"])] = item
     merged = list(existing_map.values())
     merged.sort(key=lambda x: x.get("displayTime", ""), reverse=True)
     return merged[:SIZE]
@@ -445,6 +497,7 @@ def merge_news(existing, new):
 # ============================================================
 
 def send_feishu(news):
+    """推送飞书消息，失败自动重试（指数退避），提高送达率"""
     if not FEISHU_WEBHOOK_URL:
         log("⚠️ 未配置 FEISHU_WEBHOOK_URL，跳过推送")
         return False
@@ -507,18 +560,28 @@ def send_feishu(news):
         payload["timestamp"] = timestamp
         payload["sign"] = gen_feishu_sign(FEISHU_SECRET, timestamp)
 
-    try:
-        resp = requests.post(FEISHU_WEBHOOK_URL, json=payload, timeout=15)
-        result = resp.json()
-        if result.get("code") == 0 or result.get("StatusCode") == 0:
-            log(f"✅ 飞书推送成功：{news['title']}")
-            return True
-        else:
-            log(f"❌ 飞书推送失败：{json.dumps(result, ensure_ascii=False)}")
-            return False
-    except Exception as e:
-        log(f"❌ 飞书推送异常：{e}")
-        return False
+    last_err = None
+    for attempt in range(1, HTTP_RETRIES + 1):
+        try:
+            resp = SESSION.post(FEISHU_WEBHOOK_URL, json=payload, timeout=15)
+            result = resp.json()
+            if result.get("code") == 0 or result.get("StatusCode") == 0:
+                log(f"✅ 飞书推送成功：{news['title']}")
+                return True
+            last_err = json.dumps(result, ensure_ascii=False)
+            # 签名错误 / 关键词屏蔽等业务错误，重试也不会成功，直接放弃
+            if result.get("code") not in (9499, 9498) and result.get("code") is not None:
+                log(f"❌ 飞书推送失败（业务错误，不再重试）：{last_err}")
+                return False
+        except Exception as e:
+            last_err = str(e)
+        if attempt < HTTP_RETRIES:
+            wait = 2 ** attempt
+            log(f"⚠️ 推送失败（第 {attempt}/{HTTP_RETRIES} 次），{wait}s 后重试：{last_err}")
+            time.sleep(wait)
+
+    log(f"❌ 飞书推送最终失败（已重试 {HTTP_RETRIES} 次）：{last_err}")
+    return False
 
 
 # ============================================================
@@ -543,8 +606,8 @@ def push_new_news(existing, new, lang):
     elif lang != PUSH_LANG:
         return 0
 
-    # 已保存的 postId 集合
-    existing_ids = {item["postId"] for item in existing}
+    # 已保存的 postId 集合（统一按字符串比较，兼容旧缓存中的 int 类型）
+    existing_ids = {str(item["postId"]) for item in existing}
     # 已保存的最新时间（用于过滤更早的新闻）
     latest_time = existing[0].get("displayTime", "") if existing else ""
 
@@ -553,7 +616,7 @@ def push_new_news(existing, new, lang):
 
     pushed_count = 0
     for item in new_sorted:
-        post_id = item["postId"]
+        post_id = str(item["postId"])
         title = item["title"]
 
         # 已推送过的跳过
