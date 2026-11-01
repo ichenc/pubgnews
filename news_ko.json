@@ -2,7 +2,7 @@
     {
         "title": "[개발일지] 콘솔 안티치트 대응 현황 및 향후 계획",
         "summary": "",
-        "postId": 11345,
+        "postId": "11345",
         "category": "dev_notes",
         "labels": [
             "label_console"
@@ -16,7 +16,7 @@
     {
         "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (10/19~10/25)",
         "summary": "",
-        "postId": 11335,
+        "postId": "11335",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -31,7 +31,7 @@
     {
         "title": "[안내] 2026년 개인정보 이용·제공 내역 통지 ",
         "summary": "",
-        "postId": 11297,
+        "postId": "11297",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -46,7 +46,7 @@
     {
         "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (10/12~10/18)",
         "summary": "",
-        "postId": 11258,
+        "postId": "11258",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -61,7 +61,7 @@
     {
         "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (10/05~10/11)",
         "summary": "",
-        "postId": 11221,
+        "postId": "11221",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -76,7 +76,7 @@
     {
         "title": "SLB: 새벽을 깨우는 자들",
         "summary": "",
-        "postId": 11138,
+        "postId": "11138",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -91,7 +91,7 @@
     {
         "title": "2026년 10월 상점 안내",
         "summary": "",
-        "postId": 11182,
+        "postId": "11182",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -106,7 +106,7 @@
     {
         "title": "맵 서비스 리포트 - 업데이트 43.2",
         "summary": "",
-        "postId": 11137,
+        "postId": "11137",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -121,7 +121,7 @@
     {
         "title": "패치 노트 - 업데이트 43.2",
         "summary": "업데이트 43.2에서 신규 기능 및 개선 사항을 만나보세요.",
-        "postId": 11136,
+        "postId": "11136",
         "category": "patch_notes",
         "labels": [
             "label_pc",
@@ -136,7 +136,7 @@
     {
         "title": "PUBG x 벤틀리",
         "summary": "",
-        "postId": 11181,
+        "postId": "11181",
         "category": "notice",
         "labels": [
             "label_pc",

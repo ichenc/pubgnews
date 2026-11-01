@@ -2,7 +2,7 @@
     {
         "title": "2027 PUBG Esports: What’s Changing",
         "summary": "Discover what’s changing in PUBG Esports in 2027, including regional competition updates, four Phases, and a new points system.",
-        "postId": 11354,
+        "postId": "11354",
         "category": "notice",
         "labels": [
             "label_esports"
@@ -16,7 +16,7 @@
     {
         "title": "[Dev Letter] Console Anti-Cheat Update and Future Plans",
         "summary": "",
-        "postId": 11345,
+        "postId": "11345",
         "category": "dev_notes",
         "labels": [
             "label_console"
@@ -30,7 +30,7 @@
     {
         "title": "PUBG: BATTLEGROUNDS Weekly Bans Notice (10/19~10/25)",
         "summary": "",
-        "postId": 11335,
+        "postId": "11335",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -45,7 +45,7 @@
     {
         "title": "PUBG: BATTLEGROUNDS Weekly Bans Notice (10/12~10/18)",
         "summary": "",
-        "postId": 11258,
+        "postId": "11258",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -60,7 +60,7 @@
     {
         "title": "PUBG: BATTLEGROUNDS Weekly Bans Notice (10/05~10/11)",
         "summary": "",
-        "postId": 11221,
+        "postId": "11221",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -75,7 +75,7 @@
     {
         "title": "SLB: DAWNBREAKERS OF RONDO",
         "summary": " Power the generators, survive Rondo's darkest night, and live to see the dawn.",
-        "postId": 11138,
+        "postId": "11138",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -90,7 +90,7 @@
     {
         "title": "October Store Update 2026",
         "summary": " Welcome to the tenth Store Update of 2026!",
-        "postId": 11182,
+        "postId": "11182",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -105,7 +105,7 @@
     {
         "title": "Map Service Report - Update 43.2",
         "summary": "",
-        "postId": 11137,
+        "postId": "11137",
         "category": "notice",
         "labels": [
             "label_pc",
@@ -120,7 +120,7 @@
     {
         "title": "Patch Notes - Update 43.2",
         "summary": " Introducing Update 43.2: Discover all the latest features and improvements!",
-        "postId": 11136,
+        "postId": "11136",
         "category": "patch_notes",
         "labels": [
             "label_pc",
@@ -135,7 +135,7 @@
     {
         "title": "PUBG x Bentley",
         "summary": "",
-        "postId": 11181,
+        "postId": "11181",
         "category": "notice",
         "labels": [
             "label_pc",
