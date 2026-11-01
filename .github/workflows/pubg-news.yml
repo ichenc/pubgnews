@@ -5,12 +5,19 @@ on:
     - cron: '*/15 * * * *'
   workflow_dispatch:
 
+# 同一时间只允许一个实例运行，避免定时触发与手动触发重叠
+# 导致两个实例同时 git push 互相冲突
+concurrency:
+  group: pubg-news
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
 jobs:
   pubg-news:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repo
@@ -35,7 +42,9 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
-          git add news_*.json pubg_status_state.json
+          # push 前先 rebase 远端最新，进一步降低冲突概率
+          git pull --rebase origin main || true
+          git add news_*.json pubg_status_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No news updates to commit."
           else
