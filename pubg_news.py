@@ -127,6 +127,7 @@ def http_get(url, retries=HTTP_RETRIES, backoff=HTTP_BACKOFF, **kwargs):
     带重试的 GET 请求（指数退避）。
     GitHub Actions 网络偶发抖动，单次失败就跳过整轮会导致漏抓。
     """
+    retries = max(1, int(retries))
     last_exc = None
     for attempt in range(1, retries + 1):
         try:
@@ -391,6 +392,7 @@ def check_status_change(old, new):
             "summary": summary,
             "postId": f"status_pc_maint_{new_m}_{ts}",
             "category": "status",
+            "severity": _CARD_TEMPLATE_ORANGE if new_m == 2 else _CARD_TEMPLATE_GREEN,
             "source": "服务器状态 · pubg.plus",
             "displayTime": now_str,
             "newsUrl": "https://pubg.plus/zh-CN/status",
@@ -412,6 +414,7 @@ def check_status_change(old, new):
             "summary": summary,
             "postId": f"status_pc_conn_{new_s}_{ts}",
             "category": "status",
+            "severity": _CARD_TEMPLATE_RED if new_s == 0 else _CARD_TEMPLATE_GREEN,
             "source": "服务器状态 · pubg.plus",
             "displayTime": now_str,
             "newsUrl": "https://pubg.plus/zh-CN/status",
@@ -496,91 +499,181 @@ def merge_news(existing, new):
 #  飞书推送
 # ============================================================
 
+# ============================================================
+#  飞书互动卡片（interactive card）构建
+# ============================================================
+
+# 卡片表头主题色（飞书 header template 取值），用于视觉区分与一致性
+_CARD_TEMPLATE_BLUE = "blue"      # 官网新闻 / 默认
+_CARD_TEMPLATE_ORANGE = "orange"  # 微博维护公告 / 维护中
+_CARD_TEMPLATE_RED = "red"        # 服务器异常 / 连接中断
+_CARD_TEMPLATE_GREEN = "green"    # 恢复 / 正常
+_VALID_TEMPLATES = frozenset([
+    "blue", "orange", "red", "green", "wathet",
+    "grey", "violet", "indigo", "turquoise",
+])
+
+
+def _escape_markdown(text):
+    """转义 lark_md 中的特殊字符，避免标题/摘要里的 * _ ` [ ] 破坏卡片排版"""
+    return (
+        text.replace("\\", "\\\\")
+        .replace("*", "\\*")
+        .replace("_", "\\_")
+        .replace("`", "\\`")
+        .replace("[", "\\[")
+        .replace("]", "\\]")
+    )
+
+
+def _truncate(text, limit):
+    """超长文本截断并追加省略号"""
+    if len(text) <= limit:
+        return text
+    return text[:limit].rstrip() + "…"
+
+
+def _card_template(news):
+    """
+    根据消息类别 / 严重程度选择卡片表头主题色。
+    优先使用 status 消息自带的 severity 字段，保证视觉一致且有区分度。
+    """
+    severity = news.get("severity")
+    if severity in _VALID_TEMPLATES:
+        return severity
+    if news.get("category") == "weibo":
+        return _CARD_TEMPLATE_ORANGE
+    return _CARD_TEMPLATE_BLUE
+
+
+def _link_text(news):
+    """根据来源给出统一的跳转按钮文案"""
+    category = news.get("category", "")
+    if category == "weibo":
+        return "查看微博原文"
+    if category == "status":
+        return "查看状态面板"
+    return "查看官网详情"
+
+
+def build_interactive_card(news):
+    """
+    将一条新闻 / 公告组装为飞书互动卡片（interactive card）。
+
+    相比原 post 富文本，卡片具备：彩色表头、封面图、摘要、
+    来源 / 时间元信息、跳转按钮与统一页脚，视觉更美观一致。
+    """
+    title = (news.get("title") or "").strip()
+    summary = (news.get("summary") or "").strip()
+    source = news.get("source") or news.get("category") or ""
+    display_time = news.get("displayTime") or ""
+    news_url = news.get("newsUrl") or ""
+    image_url = news.get("imageUrl") or news.get("thumbUrl") or ""
+
+    elements = []
+
+    # 标题（加粗突出）
+    if title:
+        elements.append({
+            "tag": "div",
+            "text": {"tag": "lark_md", "content": f"**{_escape_markdown(title)}**"},
+        })
+
+    # 来源 + 时间（两行元信息）
+    meta_bits = []
+    if source:
+        meta_bits.append(f"🏷️ 来源：{_escape_markdown(source)}")
+    if display_time:
+        meta_bits.append(f"🕒 时间：{display_time}")
+    if meta_bits:
+        elements.append({
+            "tag": "div",
+            "text": {"tag": "lark_md", "content": "  \n".join(meta_bits)},
+        })
+
+    # 封面图（仅当有图时展示，避免空白占位）
+    if image_url:
+        elements.append({
+            "tag": "img",
+            "img_path": image_url,
+            "alt": {"tag": "plain_text", "content": title or "cover"},
+            "mode": "fit_horizontal",
+            "corner_radius": 8,
+        })
+
+    # 摘要
+    if summary:
+        elements.append({
+            "tag": "div",
+            "text": {"tag": "lark_md", "content": _truncate(_escape_markdown(summary), 500)},
+        })
+
+    # 分隔线 + 跳转按钮
+    elements.append({"tag": "hr"})
+    elements.append({
+        "tag": "action",
+        "actions": [{
+            "tag": "button",
+            "text": {"tag": "plain_text", "content": f"👉 {_link_text(news)}"},
+            "type": "primary",
+            "url": news_url,
+        }],
+    })
+
+    # 统一页脚
+    elements.append({
+        "tag": "note",
+        "elements": [{"tag": "plain_text", "content": "🤖 PUBG 公告助手 · 自动推送"}],
+    })
+
+    card = {
+        "config": {"wide_screen_mode": True},
+        "header": {
+            "title": {"tag": "plain_text", "content": PUSH_TITLE},
+            "template": _card_template(news),
+        },
+        "elements": elements,
+    }
+    return {"msg_type": "interactive", "card": card}
+
+
 def send_feishu(news):
-    """推送飞书消息，失败自动重试（指数退避），提高送达率"""
+    """推送飞书互动卡片，失败自动重试（指数退避），提高送达率"""
     if not FEISHU_WEBHOOK_URL:
         log("⚠️ 未配置 FEISHU_WEBHOOK_URL，跳过推送")
         return False
 
-    # 组装富文本内容（每行一个数组）
-    content_lines = []
+    payload = build_interactive_card(news)
 
-    # 标题行
-    content_lines.append([
-        {"tag": "text", "text": f"标题：{news['title']}"}
-    ])
-
-    # 分类 / 来源
-    source = news.get("source") or news.get("category")
-    if source:
-        content_lines.append([
-            {"tag": "text", "text": f"来源：{source}"}
-        ])
-
-    # 摘要
-    summary = (news.get("summary") or "").strip()
-    if summary:
-        content_lines.append([
-            {"tag": "text", "text": f"摘要：{summary[:300]}"}
-        ])
-
-    # 发布时间
-    if news.get("displayTime"):
-        content_lines.append([
-            {"tag": "text", "text": f"时间：{news['displayTime']}"}
-        ])
-
-    # 跳转链接：按来源类型区分文案
-    category = news.get("category", "")
-    if category == "weibo":
-        link_text = "👉 查看微博原文"
-    elif category == "status":
-        link_text = "👉 查看状态面板"
-    else:
-        link_text = "👉 点击查看官网详情"
-    content_lines.append([
-        {"tag": "a", "text": link_text, "href": news["newsUrl"]}
-    ])
-
-    payload = {
-        "msg_type": "post",
-        "content": {
-            "post": {
-                "zh_cn": {
-                    "title": PUSH_TITLE,
-                    "content": content_lines
-                }
-            }
-        }
-    }
-
-    # 签名校验
+    # 签名校验（开启时）
     if FEISHU_SECRET:
         timestamp = str(int(time.time()))
         payload["timestamp"] = timestamp
         payload["sign"] = gen_feishu_sign(FEISHU_SECRET, timestamp)
 
-    last_err = None
     for attempt in range(1, HTTP_RETRIES + 1):
         try:
             resp = SESSION.post(FEISHU_WEBHOOK_URL, json=payload, timeout=15)
             result = resp.json()
-            if result.get("code") == 0 or result.get("StatusCode") == 0:
-                log(f"✅ 飞书推送成功：{news['title']}")
-                return True
-            last_err = json.dumps(result, ensure_ascii=False)
-            # 签名错误 / 关键词屏蔽等业务错误，重试也不会成功，直接放弃
-            if result.get("code") not in (9499, 9498) and result.get("code") is not None:
-                log(f"❌ 飞书推送失败（业务错误，不再重试）：{last_err}")
-                return False
         except Exception as e:
-            last_err = str(e)
+            # 网络抖动 / 解析失败属于可重试的瞬态错误
+            log(f"⚠️ 推送请求异常（第 {attempt}/{HTTP_RETRIES} 次）：{e}")
+        else:
+            # 飞书自定义机器人成功时 code == 0
+            code = result.get("code", result.get("StatusCode"))
+            if code == 0:
+                log(f"✅ 飞书推送成功：{news.get('title')}")
+                return True
+            # 业务错误（签名错误 / 被限流 / 关键词屏蔽等）重试无意义，直接放弃
+            log(f"❌ 飞书推送失败（业务错误）：{json.dumps(result, ensure_ascii=False)}")
+            return False
+
         if attempt < HTTP_RETRIES:
-            wait = 2 ** attempt
-            log(f"⚠️ 推送失败（第 {attempt}/{HTTP_RETRIES} 次），{wait}s 后重试：{last_err}")
+            wait = HTTP_BACKOFF ** attempt
+            log(f"⚠️ {wait}s 后重试")
             time.sleep(wait)
 
-    log(f"❌ 飞书推送最终失败（已重试 {HTTP_RETRIES} 次）：{last_err}")
+    log(f"❌ 飞书推送最终失败（已重试 {HTTP_RETRIES} 次）")
     return False
 
 
