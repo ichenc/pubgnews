@@ -233,6 +233,87 @@ def _extract_weibo_title(body):
     return body[:30].strip()
 
 
+def _parse_sina_time(raw, base=None):
+    """
+    把新浪移动页的时间文本解析为北京时间字符串 "YYYY-MM-DD HH:MM:SS"。
+
+    新浪对较新的微博会返回相对/简写格式，例如：
+      "刚刚" / "8分钟前" / "3小时前" / "2天前"
+      "今天 15:56" / "昨天 09:00" / "前天 20:30"
+      "15:56"（裸时分，视为今天）
+      "11-04 15:56"（月日时分，视为今年）
+      "2026-11-04 15:56" 或 "2026-11-04 15:56:30"
+    统一转成绝对北京时间，避免旧逻辑因只认完整日期而漏推、拖延。
+    无法解析时返回 None，由调用方回退为当前北京时间。
+    """
+    if not raw:
+        return None
+    s = raw.strip()
+    now = base or now_cn()
+
+    # 相对时间
+    m = re.match(r"^(\d+)\s*秒前$", s)
+    if m:
+        return (now - timedelta(seconds=int(m.group(1)))).strftime("%Y-%m-%d %H:%M:%S")
+    m = re.match(r"^(\d+)\s*分钟前$", s)
+    if m:
+        return (now - timedelta(minutes=int(m.group(1)))).strftime("%Y-%m-%d %H:%M:%S")
+    m = re.match(r"^(\d+)\s*小时前$", s)
+    if m:
+        return (now - timedelta(hours=int(m.group(1)))).strftime("%Y-%m-%d %H:%M:%S")
+    m = re.match(r"^(\d+)\s*天前$", s)
+    if m:
+        return (now - timedelta(days=int(m.group(1)))).strftime("%Y-%m-%d %H:%M:%S")
+    if s == "刚刚":
+        return now.strftime("%Y-%m-%d %H:%M:%S")
+
+    # 今天/昨天/前天 HH:MM[:SS]
+    m = re.match(r"^(今天|昨天|前天)\s*(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?$", s)
+    if m:
+        days = {"今天": 0, "昨天": 1, "前天": 2}[m.group(1)]
+        d = (now - timedelta(days=days)).replace(
+            hour=int(m.group(2)), minute=int(m.group(3)),
+            second=int(m.group(4)) if m.group(4) else 0, microsecond=0,
+        )
+        return d.strftime("%Y-%m-%d %H:%M:%S")
+
+    # 裸 HH:MM[:SS] —— 视为今天
+    m = re.match(r"^(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?$", s)
+    if m:
+        d = now.replace(
+            hour=int(m.group(1)), minute=int(m.group(2)),
+            second=int(m.group(3)) if m.group(3) else 0, microsecond=0,
+        )
+        return d.strftime("%Y-%m-%d %H:%M:%S")
+
+    # 月-日 时:分[:秒] —— 视为今年
+    m = re.match(r"^(\d{1,2})-(\d{1,2})\s+(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?$", s)
+    if m:
+        d = now.replace(
+            month=int(m.group(1)), day=int(m.group(2)),
+            hour=int(m.group(3)), minute=int(m.group(4)),
+            second=int(m.group(5)) if m.group(5) else 0, microsecond=0,
+        )
+        return d.strftime("%Y-%m-%d %H:%M:%S")
+
+    # 完整日期 时:分[:秒]（兼容 "T" 分隔与可选秒）
+    m = re.match(
+        r"^(\d{4})-(\d{1,2})-(\d{1,2})[ T](\d{1,2}):(\d{1,2})(?::(\d{1,2}))?$", s
+    )
+    if m:
+        try:
+            d = now.replace(
+                year=int(m.group(1)), month=int(m.group(2)), day=int(m.group(3)),
+                hour=int(m.group(4)), minute=int(m.group(5)),
+                second=int(m.group(6)) if m.group(6) else 0, microsecond=0,
+            )
+        except ValueError:
+            return None
+        return d.strftime("%Y-%m-%d %H:%M:%S")
+
+    return None
+
+
 def fetch_weibo():
     """
     抓取 KRAFTON_GAME 官微最新微博，过滤出含维护类关键词的条目。
@@ -277,14 +358,16 @@ def fetch_weibo():
         if not any(kw in body for kw in WEIBO_KEYWORDS):
             continue
 
-        # 时间统一成 "YYYY-MM-DD HH:MM:SS"。
-        # 防御：若页面返回相对时间（如 "3分钟前"）等无法解析的格式，
-        # 直接丢弃该条目，否则字符串排序会错乱，导致推送逻辑误判
-        display_time = time_str.strip()
-        if not re.match(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$", display_time):
-            log(f"⏭️ 微博时间格式异常，跳过该条：{display_time} | {body[:30]}")
-            continue
-        display_time += ":00"
+        # 时间统一成 "YYYY-MM-DD HH:MM:SS"（北京时间）。
+        # 关键修复：新浪移动页对较新的微博返回相对时间（如"3分钟前""8小时前"）
+        # 或"今天 15:56"等格式，旧逻辑只认"YYYY-MM-DD HH:MM"，匹配不上就丢弃，
+        # 直到页面切到完整日期才推送，造成最长约 8 小时的延迟。
+        # 现改为 _parse_sina_time 兼容多种格式；实在解析不出则用当前北京时间兜底，
+        # 确保及时推送、不再拖延。
+        display_time = _parse_sina_time(time_str)
+        if not display_time:
+            display_time = now_cn().strftime("%Y-%m-%d %H:%M:%S")
+            log(f"⚠️ 微博时间解析失败，使用当前时间兜底：{time_str!r} | {body[:30]}")
 
         news_items.append({
             "title": _extract_weibo_title(body),
