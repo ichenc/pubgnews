@@ -7,6 +7,10 @@ compatibility_date = "2026-01-01"
 [triggers]
 crons = ["*/5 * * * *"]
 
+# 打开可观测性，方便在控制台/接口里查看每次 cron 的日志与报错
+[observability]
+enabled = true
+
 # 需要设置的密钥（不要写明文）：
 #   npx wrangler secret put GH_TOKEN
 # 令牌权限：classic PAT 需 repo + workflow；fine-grained PAT 对该仓库给

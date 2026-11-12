@@ -1,5 +1,15 @@
 # 准时触发器（Cloudflare Worker）
 
+## 当前部署状态（2026-11-12）
+
+| 项目 | 值 |
+|---|---|
+| Worker 名称 | `pubgnews-scheduler` |
+| 访问地址 | https://pubgnews-scheduler.cxue0114.workers.dev |
+| Cron | `*/5 * * * *`（每 5 分钟，UTC 计时） |
+| 密钥 | `GH_TOKEN`（已写入 Cloudflare Secret，不在仓库中） |
+| 实测结果 | 2026-11-12 10:50:37 UTC 自动触发 → 工作流 `repository_dispatch` 运行成功 |
+
 ## 为什么需要它
 
 GitHub Actions 的 `schedule` 是**尽力而为**：高峰期会整批延迟，甚至被限流。
@@ -71,8 +81,9 @@ python deploy.py
 | 现象 | 原因 / 处理 |
 |---|---|
 | `Invalid API Token`（错误码 1000/9109） | 令牌无效或复制不全。请到 Cloudflare「我的个人资料 → API 令牌」重新创建，权限选 **Workers Scripts: Edit**；账户级令牌请确认账户 ID 正确。 |
+| 方式 B 在第 5 步报 `10026 Could not parse request body` | 个别网络环境下 `PUT .../schedules` 接口拒绝 JSON 请求体（脚本与密钥此时已上传成功）。改用**方式 A** 执行一次 `npx wrangler deploy` 即可写入 Cron——`wrangler.toml` 里已配好 `[triggers]`。 |
 | 触发返回 401/403 | GitHub 令牌权限不足。classic PAT 需勾选 `repo` 与 `workflow`。 |
-| 部署后仍不触发 | 检查 Cron 是否生效（Trigger 页）；或手动访问 Worker 域名看返回。 |
+| 部署后仍不触发 | 检查 Cron 是否生效（Trigger 页）；或手动访问 Worker 域名看返回。Cron 新建后首次调度可能有 1~2 个周期的延迟。 |
 | 推送仍偶发变慢 | 属 GitHub Actions 入队抖动；可把 `crons` 调到每 2~3 分钟，或在仓库加更多兜底 `schedule`。 |
 
 > 安全：`GH_TOKEN` 只通过 `wrangler secret` 或 API 写入 Cloudflare，**不要**写进

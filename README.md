@@ -100,6 +100,9 @@ GitHub Actions 的 `schedule` 是**尽力而为**：高峰期会整批延迟，�
 cd scheduler && npx wrangler login && npx wrangler secret put GH_TOKEN && npx wrangler deploy
 ```
 
+> **当前状态：已部署并验证。** Worker `pubgnews-scheduler` 以 `*/5 * * * *` 运行，
+> 2026-11-12 10:50:37 UTC 自动触发的工作流运行成功，推送频率已从「数小时一次」变为「约 5 分钟一次」。
+
 > 不部署外部定时器时，`schedule` 仍可能被 GitHub 限流到数小时一次——这是平台限制，
 > 仓库内无法消除，只能靠外部定时器彻底解决。
 
