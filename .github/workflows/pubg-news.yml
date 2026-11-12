@@ -1,12 +1,19 @@
 name: PUBG News
 
+# 定时架构（延迟根治方案，详见 README「定时与延迟」）
+#   * 准时层：Cloudflare Worker 每 5 分钟通过 repository_dispatch 触发本工作流。
+#     dispatch 不经过 GitHub 的 schedule 队列，通常秒级入队。
+#   * 兜底层：下面的 schedule 是「尽力而为」，实测会被 GitHub 限流到每 3~10 小时一次，
+#     仅用于外部定时器失效时兜底，不保证准时。
+#   * 正确性：pubg_news.py 按 postId 去重、按时间排序，重复/延迟触发都不会重复推送。
 on:
+  repository_dispatch:
+    types: [pubg-cron]
+  workflow_dispatch:
   schedule:
     - cron: '*/15 * * * *'
-  workflow_dispatch:
 
-# 同一时间只允许一个实例运行，避免定时触发与手动触发重叠
-# 导致两个实例同时 git push 互相冲突
+# 同一时间只允许一个实例运行，避免并发 git push 互相冲突
 concurrency:
   group: pubg-news
   cancel-in-progress: false
@@ -22,6 +29,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # push 失败时需 rebase，保留完整历史
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -40,14 +49,24 @@ jobs:
 
       - name: Commit updated news files
         run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "actions@github.com"
-          # push 前先 rebase 远端最新，进一步降低冲突概率
-          git pull --rebase origin main || true
+          set -uo pipefail
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
           git add news_*.json pubg_status_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No news updates to commit."
-          else
-            git commit -m "Update news"
-            git push
+            exit 0
           fi
+          git commit -m "Update news"
+          # 多个触发点可能前后脚提交，push 冲突时 rebase 后重试，避免丢更新
+          for i in 1 2 3 4; do
+            if git push origin HEAD:main; then
+              echo "push ok"
+              exit 0
+            fi
+            echo "::warning::push 第 $i 次失败，rebase 后重试"
+            git pull --rebase --autostash origin main || true
+            sleep $((i * 3))
+          done
+          echo "::error::push 连续失败，本次未入库（下次运行会补上）"
+          exit 1

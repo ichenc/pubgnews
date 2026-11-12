@@ -519,9 +519,32 @@ def load_status_state():
 
 
 def save_status_state(state):
-    """保存当前 PC 服务器状态（只存对比需要的字段）"""
+    """
+    保存当前 PC 服务器状态（只存对比需要的字段）。
+
+    注意：仅当「维护状态 / 连接状态 / 客户端版本」发生变化时才写文件。
+    否则在 5 分钟级高频触发下，online / saved_at 每轮都变，
+    会让工作流每次运行都产生一次无意义的 git 提交。
+    """
     filename = os.path.join(SCRIPT_DIR, STATUS_CACHE_FILE)
     pc = state.get("pc") or {}
+    signature = (
+        pc.get("maintenance"),
+        pc.get("server_status"),
+        pc.get("client_version"),
+    )
+
+    old = load_status_state()
+    if old:
+        old_pc = old.get("pc") or {}
+        old_signature = (
+            old_pc.get("maintenance"),
+            old_pc.get("server_status"),
+            old_pc.get("client_version"),
+        )
+        if old_signature == signature:
+            return  # 无实质变化，不写文件
+
     slim = {
         "pc": {
             "maintenance": pc.get("maintenance"),

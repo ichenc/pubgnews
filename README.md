@@ -80,6 +80,31 @@
 
 ---
 
+## ⏱️ 定时与延迟（为什么用 Cloudflare）
+
+GitHub Actions 的 `schedule` 是**尽力而为**：高峰期会整批延迟，甚至被限流。
+本项目实测（2026-11-05 ~ 11-12）虽然 `cron` 写的是每 15 分钟，**实际每 3~10 小时才运行一次**，
+这才是「推送延迟太高」的根本原因——不是抓取慢，而是任务没被及时调度。
+
+根治方案是加一个**外部准时层**：
+
+| 层 | 触发方式 | 作用 |
+|---|---|---|
+| 准时层 | Cloudflare Worker 每 5 分钟调用 `repository_dispatch`（事件 `pubg-cron`） | 分钟级准时，不受 GitHub cron 排队影响 |
+| 兜底层 | 工作流里的 `schedule`（每 15 分钟，实际会被限流） | 外部定时器失效时保证仍有运行，不保证准时 |
+| 正确性 | `postId` 去重 + 按时间排序 | 重复 / 延迟多次触发都不会重复推送 |
+
+部署外部定时器只需一条命令，详见 [`scheduler/README.md`](./scheduler/README.md)：
+
+```bash
+cd scheduler && npx wrangler login && npx wrangler secret put GH_TOKEN && npx wrangler deploy
+```
+
+> 不部署外部定时器时，`schedule` 仍可能被 GitHub 限流到数小时一次——这是平台限制，
+> 仓库内无法消除，只能靠外部定时器彻底解决。
+
+---
+
 ## ⚙️ 可配置项
 
 所有配置通过 GitHub Actions 环境变量（Secrets）传入，无需修改代码。

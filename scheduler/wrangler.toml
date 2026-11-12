@@ -1,0 +1,13 @@
+name = "pubgnews-scheduler"
+main = "worker.js"
+compatibility_date = "2026-01-01"
+
+# Cloudflare Cron Triggers 按 UTC 计时；*/5 即每 5 分钟触发一次。
+# 这是「准时层」，用于绕开 GitHub Actions schedule 被限流到数小时的排队问题。
+[triggers]
+crons = ["*/5 * * * *"]
+
+# 需要设置的密钥（不要写明文）：
+#   npx wrangler secret put GH_TOKEN
+# 令牌权限：classic PAT 需 repo + workflow；fine-grained PAT 对该仓库给
+#           Contents: read & write 与 Actions: read & write（dispatch 需要）。
