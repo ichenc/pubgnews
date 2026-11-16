@@ -1,5 +1,20 @@
 [
     {
+        "title": "[안내] PUBG 치키너즈 2기 크리에이터 모집 안내",
+        "summary": "",
+        "postId": "11397",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-11-16 03:09:38",
+        "displayTime": "2026-11-16 03:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261116/QFEvhXYn.webp",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261116/QFEvhXYn_thumb.webp",
+        "newsUrl": "https://pubg.com/zh-cn/news/11397"
+    },
+    {
         "title": "[开发者日志] 反作弊工作进展 - 未授权程序传播与规避封禁整治现状",
         "summary": "[开发者日志] 反作弊工作进展 - 未授权程序传播与规避封禁整治现状",
         "postId": "11346",
@@ -133,20 +148,5 @@
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261026/Knr1wPP0.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261026/Knr1wPP0_thumb.jpg",
         "newsUrl": "https://pubg.com/zh-cn/news/11258"
-    },
-    {
-        "title": "【每周违规账号公示】 10/05~10/11",
-        "summary": "【每周违规账号公示】 10/05~10/11",
-        "postId": "11221",
-        "category": "notice",
-        "labels": [
-            "label_pc",
-            "label_console"
-        ],
-        "createdAt": "2026-10-15 07:58:46",
-        "displayTime": "2026-10-14 07:00:00",
-        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261015/HwvHZLJz.jpg",
-        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261015/HwvHZLJz_thumb.jpg",
-        "newsUrl": "https://pubg.com/zh-cn/news/11221"
     }
 ]

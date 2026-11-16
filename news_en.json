@@ -1,5 +1,20 @@
 [
     {
+        "title": "[안내] PUBG 치키너즈 2기 크리에이터 모집 안내",
+        "summary": "",
+        "postId": "11397",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-11-16 03:09:38",
+        "displayTime": "2026-11-16 03:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261116/QFEvhXYn.webp",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261116/QFEvhXYn_thumb.webp",
+        "newsUrl": "https://pubg.com/en/news/11397"
+    },
+    {
         "title": "PUBG UNITED 2026: Together Again in Istanbul",
         "summary": "From December 11 to 13, 2026, PUBG UNITED returns to İstanbul, Türkiye, bringing fans from around the world together once again.",
         "postId": "11396",
@@ -128,20 +143,5 @@
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261022/xf0UpJFY.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261022/xf0UpJFY_thumb.jpg",
         "newsUrl": "https://pubg.com/en/news/11306"
-    },
-    {
-        "title": "PUBG x IVE",
-        "summary": "",
-        "postId": "11307",
-        "category": "notice",
-        "labels": [
-            "label_pc",
-            "label_console"
-        ],
-        "createdAt": "2026-10-22 05:17:43",
-        "displayTime": "2026-11-03 05:00:00",
-        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261022/R2LcKPxf.jpg",
-        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261022/R2LcKPxf_thumb.jpg",
-        "newsUrl": "https://pubg.com/en/news/11307"
     }
 ]
