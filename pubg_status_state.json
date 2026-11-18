@@ -1,10 +1,10 @@
 {
   "pc": {
-    "maintenance": 1,
-    "server_status": 1,
-    "client_version": "2611.1.1.37",
-    "online": 295735
+    "maintenance": 2,
+    "server_status": 2,
+    "client_version": "unknown",
+    "online": 72872
   },
-  "updated_at": "2026-11-12T08:16:27Z",
-  "saved_at": "2026-11-12 16:16:31"
+  "updated_at": "2026-11-18T00:05:34Z",
+  "saved_at": "2026-11-18 08:05:50"
 }
