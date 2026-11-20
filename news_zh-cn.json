@@ -1,5 +1,20 @@
 [
     {
+        "title": "PUBG x IVE 联动道具建模优化公告",
+        "summary": "PUBG x IVE 联动道具建模优化公告",
+        "postId": "11414",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-11-20 06:36:07",
+        "displayTime": "2026-11-20 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261120/K79rNOyT.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261120/K79rNOyT_thumb.jpg",
+        "newsUrl": "https://pubg.com/zh-cn/news/11414"
+    },
+    {
         "title": "【每周违规账号公示】 11/09~11/15",
         "summary": "【每周违规账号公示】 11/09~11/15",
         "postId": "11401",
@@ -127,20 +142,5 @@
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/lPemTU3f.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/lPemTU3f_thumb.jpg",
         "newsUrl": "https://pubg.com/zh-cn/news/11306"
-    },
-    {
-        "title": "PUBG x IVE",
-        "summary": "PUBG x IVE",
-        "postId": "11307",
-        "category": "notice",
-        "labels": [
-            "label_pc",
-            "label_console"
-        ],
-        "createdAt": "2026-11-03 03:26:37",
-        "displayTime": "2026-11-03 05:00:00",
-        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/FThbDCud.jpg",
-        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/FThbDCud_thumb.jpg",
-        "newsUrl": "https://pubg.com/zh-cn/news/11307"
     }
 ]

@@ -1,5 +1,20 @@
 [
     {
+        "title": "PUBG x IVE Collaboration Model Improvements",
+        "summary": "",
+        "postId": "11414",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-11-19 04:20:36",
+        "displayTime": "2026-11-20 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261119/kSc9zZzj.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261119/kSc9zZzj_thumb.jpg",
+        "newsUrl": "https://pubg.com/en/news/11414"
+    },
+    {
         "title": "PUBG: BATTLEGROUNDS Weekly Bans Notice (11/09~11/15) ",
         "summary": "",
         "postId": "11401",
@@ -123,20 +138,5 @@
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261102/i2Ei8m2W.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261102/i2Ei8m2W_thumb.jpg",
         "newsUrl": "https://pubg.com/en/news/11359"
-    },
-    {
-        "title": "Patch Notes - Update 44.1",
-        "summary": " Introducing Update 44.1: Discover all the latest features and improvements!",
-        "postId": "11338",
-        "category": "patch_notes",
-        "labels": [
-            "label_pc",
-            "label_console"
-        ],
-        "createdAt": "2026-10-26 09:24:55",
-        "displayTime": "2026-11-03 06:00:00",
-        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261026/4fhxvgil.jpg",
-        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261026/4fhxvgil_thumb.jpg",
-        "newsUrl": "https://pubg.com/en/news/11338"
     }
 ]
