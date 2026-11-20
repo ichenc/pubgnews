@@ -642,19 +642,29 @@ def load_status_state():
 
 
 def save_status_state(state):
-    """仅在内容实质变化时写文件，避免高频触发产生无意义提交"""
+    """
+    仅在内容实质变化时写文件，避免高频触发产生无意义提交。
+
+    注意：`updated_at`（上游每次抓取都会变）与 `saved_at`（本地写入时间）
+    都属于易变字段，必须排除在比较之外，否则每 2 分钟都会产生一次空提交。
+    """
     filename = os.path.join(SCRIPT_DIR, STATUS_CACHE_FILE)
+    volatile = ("saved_at", "updated_at")
+
+    def signature(data):
+        return {k: v for k, v in (data or {}).items() if k not in volatile}
+
     payload = {k: v for k, v in state.items() if k != "saved_at"}
 
     old = None
     if os.path.exists(filename):
         try:
             with open(filename, "r", encoding="utf-8") as f:
-                old = {k: v for k, v in json.load(f).items() if k != "saved_at"}
+                old = json.load(f)
         except Exception:
             old = None
 
-    if old == payload:
+    if signature(old) == signature(payload):
         return
 
     payload["saved_at"] = now_cn().strftime("%Y-%m-%d %H:%M:%S")
