@@ -7,12 +7,16 @@
         "labels": [
             "weibo"
         ],
+        "priority": "optional",
         "createdAt": "2026-11-11 12:04:00",
         "displayTime": "2026-11-11 12:04:00",
         "imageUrl": "",
         "thumbUrl": "",
-        "newsUrl": "https://m.weibo.cn/status/5364038450023155",
-        "source": "微博 · KRAFTON_GAME"
+        "source": "微博 · KRAFTON_GAME",
+        "extra_lines": [
+            "ℹ️ 维护相关通知"
+        ],
+        "newsUrl": "https://m.weibo.cn/status/5364038450023155"
     },
     {
         "title": "今日停机维护已结束，请重启客户端获取更新。#krafton#",
@@ -22,12 +26,16 @@
         "labels": [
             "weibo"
         ],
+        "priority": "optional",
         "createdAt": "2026-11-04 15:56:00",
         "displayTime": "2026-11-04 15:56:00",
         "imageUrl": "",
         "thumbUrl": "",
-        "newsUrl": "https://m.weibo.cn/status/5361559935386194",
-        "source": "微博 · KRAFTON_GAME"
+        "source": "微博 · KRAFTON_GAME",
+        "extra_lines": [
+            "ℹ️ 维护相关通知"
+        ],
+        "newsUrl": "https://m.weibo.cn/status/5361559935386194"
     },
     {
         "title": "正式服停机维护公告",
@@ -37,12 +45,35 @@
         "labels": [
             "weibo"
         ],
+        "priority": "core",
         "createdAt": "2026-11-03 15:00:00",
         "displayTime": "2026-11-03 15:00:00",
         "imageUrl": "",
         "thumbUrl": "",
-        "newsUrl": "https://m.weibo.cn/status/5361183487954372",
-        "source": "微博 · KRAFTON_GAME"
+        "source": "微博 · KRAFTON_GAME",
+        "extra_lines": [
+            "📌 正式服维护公告（重点）"
+        ],
+        "newsUrl": "https://m.weibo.cn/status/5361183487954372"
+    },
+    {
+        "title": "该问题已修复，感谢您的耐心等待。在故障期间结束的对局，其结果",
+        "summary": "该问题已修复，感谢您的耐心等待。在故障期间结束的对局，其结果可能未能被正确记录。对于再次给您带来的不便，我们深表歉意，感谢您的支持与理解。#krafton#",
+        "postId": "5359037782950428",
+        "category": "weibo",
+        "labels": [
+            "weibo"
+        ],
+        "priority": "optional",
+        "createdAt": "2026-10-28 16:53:00",
+        "displayTime": "2026-10-28 16:53:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "source": "微博 · KRAFTON_GAME",
+        "extra_lines": [
+            "ℹ️ 维护相关通知"
+        ],
+        "newsUrl": "https://m.weibo.cn/status/5359037782950428"
     },
     {
         "title": "Steam 连接故障公告",

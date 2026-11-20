@@ -12,6 +12,7 @@
         "displayTime": "2026-11-20 07:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261120/K79rNOyT.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261120/K79rNOyT_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/zh-cn/news/11414"
     },
     {
@@ -66,6 +67,7 @@
         "displayTime": "2026-11-05 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261104/ynzr1UA2.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261104/ynzr1UA2_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/zh-cn/news/11346"
     },
     {
@@ -81,10 +83,11 @@
         "displayTime": "2026-11-04 07:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261105/nwZUAZLN.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261105/nwZUAZLN_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/zh-cn/news/11359"
     },
     {
-        "title": "44.1版本更新公告 ",
+        "title": "44.1版本更新公告",
         "summary": "在44.1版本更新中体验新功能和优化内容吧！",
         "postId": "11338",
         "category": "patch_notes",
@@ -96,6 +99,7 @@
         "displayTime": "2026-11-03 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/KfffYfp6.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/KfffYfp6_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/zh-cn/news/11338"
     },
     {
@@ -111,6 +115,7 @@
         "displayTime": "2026-11-03 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/4T4eUfKl.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/4T4eUfKl_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/zh-cn/news/11337"
     },
     {
@@ -126,6 +131,7 @@
         "displayTime": "2026-11-03 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/orzNnIKE.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/orzNnIKE_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/zh-cn/news/11336"
     },
     {
@@ -141,6 +147,689 @@
         "displayTime": "2026-11-03 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/lPemTU3f.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/lPemTU3f_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/zh-cn/news/11306"
+    },
+    {
+        "title": "PUBG x IVE",
+        "summary": "PUBG x IVE",
+        "postId": "11307",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-11-03 03:26:37",
+        "displayTime": "2026-11-03 05:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/FThbDCud.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/FThbDCud_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11307"
+    },
+    {
+        "title": "【每周违规账号公示】 10/19~10/25",
+        "summary": "【每周违规账号公示】 10/19~10/25",
+        "postId": "11335",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-29 07:22:30",
+        "displayTime": "2026-10-28 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261029/BSy1jT8e.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261029/BSy1jT8e_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11335"
+    },
+    {
+        "title": "【每周违规账号公示】 10/12~10/18",
+        "summary": "【每周违规账号公示】 10/12~10/18",
+        "postId": "11258",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-26 04:41:25",
+        "displayTime": "2026-10-21 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261026/Knr1wPP0.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261026/Knr1wPP0_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11258"
+    },
+    {
+        "title": "【每周违规账号公示】 10/05~10/11",
+        "summary": "【每周违规账号公示】 10/05~10/11",
+        "postId": "11221",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-15 07:58:46",
+        "displayTime": "2026-10-14 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261015/HwvHZLJz.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261015/HwvHZLJz_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11221"
+    },
+    {
+        "title": "SLB：荣都破晓者",
+        "summary": "启动发电机，挺过荣都最黑暗的夜晚生存至黎明。",
+        "postId": "11138",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-14 04:09:38",
+        "displayTime": "2026-10-14 05:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261014/pCIGm2nS.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261014/pCIGm2nS_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11138"
+    },
+    {
+        "title": "2026年10月商店公告",
+        "summary": "欢迎阅读2026年的第10份商店公告!",
+        "postId": "11182",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-13 06:02:16",
+        "displayTime": "2026-10-13 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/H3MWmer0.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/H3MWmer0_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11182"
+    },
+    {
+        "title": "地图轮换报告 – 43.2",
+        "summary": "亲爱的玩家朋友们，大家好！\n欢迎查阅43.2版更新的各地区地图人气度和地图轮换报告。\n",
+        "postId": "11137",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-13 05:59:22",
+        "displayTime": "2026-10-13 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/8zTgRuip.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/8zTgRuip_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11137"
+    },
+    {
+        "title": "43.2版本更新公告",
+        "summary": "在42.3版本更新中体验新功能和优化内容吧！",
+        "postId": "11136",
+        "category": "patch_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-13 05:58:08",
+        "displayTime": "2026-10-13 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/QtCPzF5J.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/QtCPzF5J_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11136"
+    },
+    {
+        "title": "PUBG x 宾利",
+        "summary": "PUBG x 宾利",
+        "postId": "11181",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-13 04:24:03",
+        "displayTime": "2026-10-13 05:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/FNkDWHyI.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/FNkDWHyI_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11181"
+    },
+    {
+        "title": "【每周违规账号公示】 9/28~10/04",
+        "summary": "【每周违规账号公示】 9/28~10/04",
+        "postId": "11200",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-09 06:52:24",
+        "displayTime": "2026-10-07 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261009/npdWeYsr.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261009/npdWeYsr_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11200"
+    },
+    {
+        "title": "PUBG 亚星会网页活动奖励说明",
+        "summary": "PUBG 亚星会网页活动奖励说明",
+        "postId": "11177",
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-09-30 07:51:13",
+        "displayTime": "2026-09-30 09:00:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "source": "官网 · PC",
+        "newsUrl": "https://pubg.com/zh-cn/news/11177"
+    },
+    {
+        "title": "【每周违规账号公示】 9/21~9/27",
+        "summary": "【每周违规账号公示】 9/21~9/27",
+        "postId": "11173",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-09 06:54:00",
+        "displayTime": "2026-09-30 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261009/L0nNhDiG.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261009/L0nNhDiG_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11173"
+    },
+    {
+        "title": "PUBG 亚星会运营问题调查结果及处理说明",
+        "summary": "PUBG 亚星会运营问题调查结果及处理说明",
+        "postId": "11155",
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-09-23 08:54:42",
+        "displayTime": "2026-09-23 09:20:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "source": "官网 · PC",
+        "newsUrl": "https://pubg.com/zh-cn/news/11155"
+    },
+    {
+        "title": "【每周违规账号公示】 9/14~9/20",
+        "summary": "【每周违规账号公示】 9/14~9/20",
+        "postId": "11135",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-28 07:23:31",
+        "displayTime": "2026-09-23 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260928/7080xSj4.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260928/7080xSj4_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11135"
+    },
+    {
+        "title": "【每周违规账号公示】 9/7~9/13",
+        "summary": "【每周违规账号公示】 9/7~9/13",
+        "postId": "11101",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-16 07:59:48",
+        "displayTime": "2026-09-16 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260916/8itk1AYV.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260916/8itk1AYV_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11101"
+    },
+    {
+        "title": "PUBG9月生态创作激励计划重磅开启",
+        "summary": "PUBG9月生态创作激励计划重磅开启",
+        "postId": "11095",
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-09-11 13:51:04",
+        "displayTime": "2026-09-11 12:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260911/XZIyCX7F.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260911/XZIyCX7F_thumb.jpg",
+        "source": "官网 · PC",
+        "newsUrl": "https://pubg.com/zh-cn/news/11095"
+    },
+    {
+        "title": "【每周违规账号公示】 8/31~9/6",
+        "summary": "【每周违规账号公示】 8/31~9/6",
+        "postId": "11052",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-28 07:35:48",
+        "displayTime": "2026-09-09 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260928/wgOp6Unb.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260928/wgOp6Unb_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11052"
+    },
+    {
+        "title": "43.1版本更新公告",
+        "summary": "在43.1版本更新中体验新功能和优化内容吧！",
+        "postId": "11057",
+        "category": "patch_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-08 09:55:16",
+        "displayTime": "2026-09-09 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/oYcTzeMN.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/oYcTzeMN_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11057"
+    },
+    {
+        "title": "地图轮换报告 –43.1",
+        "summary": "欢迎查阅43.1版更新的各地区地图人气度和地图轮换报告。",
+        "postId": "11019",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-08 12:54:01",
+        "displayTime": "2026-09-09 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/kh0NqWMl.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/kh0NqWMl_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11019"
+    },
+    {
+        "title": "2026年9月商店公告",
+        "summary": " 欢迎阅读2026年的第9份商店公告。 ",
+        "postId": "10994",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-26 08:44:58",
+        "displayTime": "2026-09-09 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/sHRm2pYX.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/sHRm2pYX_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10994"
+    },
+    {
+        "title": "PUBG x 咒术回战",
+        "summary": "PUBG x 咒术回战",
+        "postId": "10991",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-07 02:45:41",
+        "displayTime": "2026-09-07 02:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260907/GjFhO2g4.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260907/GjFhO2g4_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10991"
+    },
+    {
+        "title": "【每周违规账号公示】 8/24~8/30",
+        "summary": "【每周违规账号公示】 8/24~8/30",
+        "postId": "11018",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-07 06:23:20",
+        "displayTime": "2026-09-02 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260907/nADJtmqB.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260907/nADJtmqB_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/11018"
+    },
+    {
+        "title": "【每周违规账号公示】 8/17~8/23",
+        "summary": "【每周违规账号公示】 8/17~8/23",
+        "postId": "10974",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-26 12:26:37",
+        "displayTime": "2026-08-26 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260826/ITGhW135.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260826/ITGhW135_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10974"
+    },
+    {
+        "title": "【每周违规账号公示】 8/10~8/16",
+        "summary": "【每周违规账号公示】 8/10~8/16",
+        "postId": "10912",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-20 08:03:58",
+        "displayTime": "2026-08-19 07:10:46",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260820/pqETLkig.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260820/pqETLkig_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10912"
+    },
+    {
+        "title": "PUBG暑期百万激励计划",
+        "summary": "PUBG暑期百万激励计划",
+        "postId": "10900",
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-08-12 08:45:59",
+        "displayTime": "2026-08-12 11:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260812/UYLZgpba.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260812/UYLZgpba_thumb.jpg",
+        "source": "官网 · PC",
+        "newsUrl": "https://pubg.com/zh-cn/news/10900"
+    },
+    {
+        "title": "【每周违规账号公示】 8/3~8/9",
+        "summary": "【每周违规账号公示】 8/3~8/9",
+        "postId": "10882",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-12 08:49:53",
+        "displayTime": "2026-08-12 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260812/ErVfXlyj.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260812/ErVfXlyj_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10882"
+    },
+    {
+        "title": "PUBG：蓝圈实验室",
+        "summary": "PUBG：蓝圈实验室",
+        "postId": "10855",
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-08-11 06:42:46",
+        "displayTime": "2026-08-11 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/wNvPJaFn.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/wNvPJaFn_thumb.jpg",
+        "source": "官网 · PC",
+        "newsUrl": "https://pubg.com/zh-cn/news/10855"
+    },
+    {
+        "title": "42.3版本更新公告",
+        "summary": "在42.3版本更新中体验新功能和优化内容吧！",
+        "postId": "10885",
+        "category": "patch_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-11 05:37:59",
+        "displayTime": "2026-08-11 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/jrP4Pyq4.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/jrP4Pyq4_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10885"
+    },
+    {
+        "title": "地图轮换报告 – 42.3",
+        "summary": "亲爱的玩家朋友们，大家好！\n欢迎查阅42.3版更新的各地区地图人气度和地图轮换报告。",
+        "postId": "10854",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-11 05:57:57",
+        "displayTime": "2026-08-11 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/p1XIrJ4U.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/p1XIrJ4U_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10854"
+    },
+    {
+        "title": "2026年8月商店公告",
+        "summary": "欢迎阅读2026年的第8份商店公告。",
+        "postId": "10828",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-11 06:16:14",
+        "displayTime": "2026-08-11 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/8ARCsdS8.png",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/8ARCsdS8_thumb.png",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10828"
+    },
+    {
+        "title": "[开发者日志] 枪战新时代：主流玩法轮换",
+        "summary": "[开发者日志] 枪战新时代：主流玩法轮换",
+        "postId": "10874",
+        "category": "dev_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-07 08:18:58",
+        "displayTime": "2026-08-07 08:04:47",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260807/ahGmYju8.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260807/ahGmYju8_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10874"
+    },
+    {
+        "title": "【每周违规账号公示】7/27~ 8/2",
+        "summary": "【每周违规账号公示】7/27~ 8/2",
+        "postId": "10847",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-05 08:03:39",
+        "displayTime": "2026-08-05 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260805/MmyvRaCz.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260805/MmyvRaCz_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10847"
+    },
+    {
+        "title": "【每周违规账号公示】7/20~ 7/26",
+        "summary": "【每周违规账号公示】7/20~ 7/26",
+        "postId": "10789",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-29 07:45:51",
+        "displayTime": "2026-07-29 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260729/rIH6dTQL.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260729/rIH6dTQL_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10789"
+    },
+    {
+        "title": "【每周违规账号公示】7/13~ 7/19",
+        "summary": "【每周违规账号公示】7/13~ 7/19",
+        "postId": "10523",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-22 09:16:31",
+        "displayTime": "2026-07-22 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260722/S6DaUVHo.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260722/S6DaUVHo_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10523"
+    },
+    {
+        "title": "被盗账号解封政策优化",
+        "summary": "被盗账号解封政策优化",
+        "postId": "10505",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-21 05:01:48",
+        "displayTime": "2026-07-21 05:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260721/eVePFPJE.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260721/eVePFPJE_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10505"
+    },
+    {
+        "title": "PUBG暑期百万激励计划",
+        "summary": "PUBG暑期百万激励计划",
+        "postId": "10508",
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-07-15 11:16:21",
+        "displayTime": "2026-07-15 11:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260715/ZmDkenlV.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260715/ZmDkenlV_thumb.jpg",
+        "source": "官网 · PC",
+        "newsUrl": "https://pubg.com/zh-cn/news/10508"
+    },
+    {
+        "title": "【每周违规账号公示】7/6~ 7/12",
+        "summary": "【每周违规账号公示】7/6~ 7/12",
+        "postId": "10490",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-21 06:25:15",
+        "displayTime": "2026-07-15 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260721/BhuIlBLI.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260721/BhuIlBLI_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10490"
+    },
+    {
+        "title": "42.2版本更新公告",
+        "summary": "在42.2版本更新中体验新功能和优化内容吧！",
+        "postId": "10459",
+        "category": "patch_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-14 06:04:34",
+        "displayTime": "2026-07-14 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260714/HJqOWKum.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260714/HJqOWKum_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10459"
+    },
+    {
+        "title": "2026年7月商店公告",
+        "summary": "欢迎查看2026年7月商店公告！",
+        "postId": "10427",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-14 07:03:08",
+        "displayTime": "2026-07-14 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260714/2PvNVN2v.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260714/2PvNVN2v_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10427"
+    },
+    {
+        "title": "地图轮换报告 – 42.2",
+        "summary": "地图轮换报告 – 42.2",
+        "postId": "10415",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-14 07:10:33",
+        "displayTime": "2026-07-14 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260714/SXg88ehA.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260714/SXg88ehA_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10415"
+    },
+    {
+        "title": "【每周违规账号公示】6/29~ 7/05",
+        "summary": "【每周违规账号公示】6/29~ 7/05",
+        "postId": "10405",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-08 11:03:45",
+        "displayTime": "2026-07-08 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260708/ffCk5PDM.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260708/ffCk5PDM_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10405"
+    },
+    {
+        "title": "【每周违规账号公示】6/22~ 6/28",
+        "summary": "【每周违规账号公示】6/22~ 6/28",
+        "postId": "10373",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-08 11:06:49",
+        "displayTime": "2026-07-01 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260708/bxHp0aBI.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260708/bxHp0aBI_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10373"
+    },
+    {
+        "title": "全新蓝圈：荣都",
+        "summary": "7月1日！节奏更快、战斗更激烈的荣都全新登场！",
+        "postId": "10367",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-06-30 06:03:28",
+        "displayTime": "2026-06-30 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260630/NeKkohuE.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260630/NeKkohuE_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/zh-cn/news/10367"
     }
 ]

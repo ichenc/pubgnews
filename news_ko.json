@@ -12,6 +12,7 @@
         "displayTime": "2026-11-20 07:00:00",
         "imageUrl": "",
         "thumbUrl": "",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/ko/news/11414"
     },
     {
@@ -39,6 +40,7 @@
         "displayTime": "2026-11-16 03:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261116/QFEvhXYn.webp",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261116/QFEvhXYn_thumb.webp",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/ko/news/11397"
     },
     {
@@ -66,6 +68,7 @@
         "displayTime": "2026-11-05 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261029/ttqqDuWU.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261029/ttqqDuWU_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/ko/news/11346"
     },
     {
@@ -81,6 +84,7 @@
         "displayTime": "2026-11-04 07:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261104/G2Xo7CmV.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261104/G2Xo7CmV_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/ko/news/11359"
     },
     {
@@ -96,6 +100,7 @@
         "displayTime": "2026-11-03 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261030/ewpVP2jG.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261030/ewpVP2jG_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/ko/news/11338"
     },
     {
@@ -111,6 +116,7 @@
         "displayTime": "2026-11-03 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261030/RhmaoORx.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261030/RhmaoORx_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/ko/news/11337"
     },
     {
@@ -126,6 +132,7 @@
         "displayTime": "2026-11-03 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261029/Yt2vxc0U.png",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261029/Yt2vxc0U_thumb.png",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/ko/news/11336"
     },
     {
@@ -141,6 +148,676 @@
         "displayTime": "2026-11-03 06:00:00",
         "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/JN5cBWBL.jpg",
         "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261103/JN5cBWBL_thumb.jpg",
+        "source": "官网 · PC / 主机",
         "newsUrl": "https://pubg.com/ko/news/11306"
+    },
+    {
+        "title": "PUBG x 아이브",
+        "summary": "",
+        "postId": "11307",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-11-02 09:28:38",
+        "displayTime": "2026-11-03 05:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261102/qQ9cRvYY.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261102/qQ9cRvYY_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11307"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (10/19~10/25)",
+        "summary": "",
+        "postId": "11335",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-28 05:10:40",
+        "displayTime": "2026-10-28 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261028/thjHzy6x.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261028/thjHzy6x_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11335"
+    },
+    {
+        "title": "[안내] 2026년 개인정보 이용·제공 내역 통지",
+        "summary": "",
+        "postId": "11297",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-21 06:35:58",
+        "displayTime": "2026-10-28 01:00:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11297"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (10/12~10/18)",
+        "summary": "",
+        "postId": "11258",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-20 10:20:02",
+        "displayTime": "2026-10-21 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261020/FUq46wPD.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261020/FUq46wPD_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11258"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (10/05~10/11)",
+        "summary": "",
+        "postId": "11221",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-14 05:51:44",
+        "displayTime": "2026-10-14 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261014/fEjFERvs.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261014/fEjFERvs_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11221"
+    },
+    {
+        "title": "SLB: 새벽을 깨우는 자들",
+        "summary": "",
+        "postId": "11138",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-13 13:38:48",
+        "displayTime": "2026-10-14 05:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/EGFAqHSQ.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261013/EGFAqHSQ_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11138"
+    },
+    {
+        "title": "2026년 10월 상점 안내",
+        "summary": "",
+        "postId": "11182",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-12 05:59:59",
+        "displayTime": "2026-10-13 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261012/AKS7YSVq.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261012/AKS7YSVq_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11182"
+    },
+    {
+        "title": "맵 서비스 리포트 - 업데이트 43.2",
+        "summary": "",
+        "postId": "11137",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-09 10:42:01",
+        "displayTime": "2026-10-13 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261009/gcuZL3wh.png",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261009/gcuZL3wh_thumb.png",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11137"
+    },
+    {
+        "title": "패치 노트 - 업데이트 43.2",
+        "summary": "업데이트 43.2에서 신규 기능 및 개선 사항을 만나보세요.",
+        "postId": "11136",
+        "category": "patch_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-09 12:30:41",
+        "displayTime": "2026-10-13 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261012/EZpfs6WI.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261012/EZpfs6WI_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11136"
+    },
+    {
+        "title": "PUBG x 벤틀리",
+        "summary": "",
+        "postId": "11181",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-12 12:13:51",
+        "displayTime": "2026-10-13 05:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261012/nIrc05LI.png",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261012/nIrc05LI_thumb.png",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11181"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (09/28~10/04)",
+        "summary": "",
+        "postId": "11200",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-10-06 12:48:06",
+        "displayTime": "2026-10-07 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261006/UxO7TYlF.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20261006/UxO7TYlF_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11200"
+    },
+    {
+        "title": "PUBG 아시아 스타즈 웹 이벤트 보상 안내",
+        "summary": "",
+        "postId": "11177",
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-09-29 10:28:12",
+        "displayTime": "2026-09-30 09:00:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "source": "官网 · PC",
+        "newsUrl": "https://pubg.com/ko/news/11177"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (09/21~09/27)",
+        "summary": "",
+        "postId": "11173",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-30 04:49:05",
+        "displayTime": "2026-09-30 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260930/yLxXx2WN.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260930/yLxXx2WN_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11173"
+    },
+    {
+        "title": "PUBG 아시아 스타즈 운영 이슈 조사 결과 및 조치 안내",
+        "summary": "",
+        "postId": "11155",
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-09-23 08:01:57",
+        "displayTime": "2026-09-23 09:20:00",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "source": "官网 · PC",
+        "newsUrl": "https://pubg.com/ko/news/11155"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (09/14~09/20)",
+        "summary": "",
+        "postId": "11135",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-30 05:56:37",
+        "displayTime": "2026-09-23 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260930/yoMTUagL.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260930/yoMTUagL_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11135"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (09/07~09/13)",
+        "summary": "",
+        "postId": "11101",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-16 02:18:30",
+        "displayTime": "2026-09-16 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260916/sgK2tFdM.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260916/sgK2tFdM_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11101"
+    },
+    {
+        "title": "개인정보 처리방침 개정 안내",
+        "summary": "",
+        "postId": "11111",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-16 04:36:46",
+        "displayTime": "2026-09-16 04:36:57",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260916/usergZoj.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260916/usergZoj_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11111"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (08/31~09/06)",
+        "summary": "",
+        "postId": "11052",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-09 02:59:37",
+        "displayTime": "2026-09-09 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260909/zwMbehXE.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260909/zwMbehXE_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11052"
+    },
+    {
+        "title": "패치 노트 - 업데이트 43.1",
+        "summary": "업데이트 43.1에서 신규 기능 및 개선 사항을 만나보세요.",
+        "postId": "11057",
+        "category": "patch_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-08 12:16:39",
+        "displayTime": "2026-09-09 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/46voZZwT.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/46voZZwT_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11057"
+    },
+    {
+        "title": "맵 서비스 리포트 - 업데이트 43.1",
+        "summary": "",
+        "postId": "11019",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-08 06:08:05",
+        "displayTime": "2026-09-09 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/f1cC3F39.png",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260908/f1cC3F39_thumb.png",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11019"
+    },
+    {
+        "title": "2026년 9월 상점 안내",
+        "summary": "2026년 9월 상점 안내에 오신 것을 환영합니다!",
+        "postId": "10994",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-07 05:38:15",
+        "displayTime": "2026-09-09 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260907/cKidG1uw.png",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260907/cKidG1uw_thumb.png",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10994"
+    },
+    {
+        "title": "PUBG x 주술회전",
+        "summary": "",
+        "postId": "10991",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-03 10:43:11",
+        "displayTime": "2026-09-07 02:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260903/C0fROUy5.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260903/C0fROUy5_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10991"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (08/24~08/30)",
+        "summary": "",
+        "postId": "11018",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-09-01 09:40:29",
+        "displayTime": "2026-09-02 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260901/yj3lGtaG.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260901/yj3lGtaG_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/11018"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (08/17~08/23)",
+        "summary": "",
+        "postId": "10974",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-24 11:02:35",
+        "displayTime": "2026-08-26 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260824/8kLFws5c.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260824/8kLFws5c_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10974"
+    },
+    {
+        "title": "PUBG 치키너즈 1기 크리에이터 모집 안내",
+        "summary": "",
+        "postId": "10919",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-18 10:19:42",
+        "displayTime": "2026-08-20 03:07:04",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260819/kD3uDHtr.png",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260819/kD3uDHtr_thumb.png",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10919"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (08/10~08/16)",
+        "summary": "",
+        "postId": "10912",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-18 05:39:16",
+        "displayTime": "2026-08-19 07:10:46",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260818/yxSbkPmz.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260818/yxSbkPmz_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10912"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (08/03~08/09)",
+        "summary": "",
+        "postId": "10882",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-11 11:15:05",
+        "displayTime": "2026-08-12 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/J7GTQLTK.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/J7GTQLTK_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10882"
+    },
+    {
+        "title": "PUBG: 플레이그라운즈",
+        "summary": "",
+        "postId": "10855",
+        "category": "notice",
+        "labels": [
+            "label_pc"
+        ],
+        "createdAt": "2026-08-11 07:30:34",
+        "displayTime": "2026-08-11 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/rIzcArde.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/rIzcArde_thumb.jpg",
+        "source": "官网 · PC",
+        "newsUrl": "https://pubg.com/ko/news/10855"
+    },
+    {
+        "title": "패치 노트 - 업데이트 42.3",
+        "summary": "업데이트 42.3에서 신규 기능 및 개선 사항을 만나보세요.",
+        "postId": "10885",
+        "category": "patch_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-11 04:10:02",
+        "displayTime": "2026-08-11 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/7nUkVecO.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260811/7nUkVecO_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10885"
+    },
+    {
+        "title": "맵 서비스 리포트 - 업데이트 42.3",
+        "summary": "",
+        "postId": "10854",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-10 13:47:30",
+        "displayTime": "2026-08-11 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260810/juhvfogr.png",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260810/juhvfogr_thumb.png",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10854"
+    },
+    {
+        "title": "2026년 8월 상점 안내 (#1)",
+        "summary": "2026년 8월 상점 안내에 오신 것을 환영합니다!",
+        "postId": "10828",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-07 06:55:29",
+        "displayTime": "2026-08-11 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260807/GjGTZ1Oi.png",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260807/GjGTZ1Oi_thumb.png",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10828"
+    },
+    {
+        "title": "PUBG x 웰치스 콜라보레이션 안내",
+        "summary": "8월 14일, 치킨 디너에 짜릿한 시원함을 더해줄 PUBG x 웰치스 콜라보레이션이 시작됩니다!",
+        "postId": "10850",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-03 13:23:28",
+        "displayTime": "2026-08-11 03:01:44",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260810/E3AGXMAm.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260810/E3AGXMAm_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10850"
+    },
+    {
+        "title": "[개발일지] 새로운 건 플레이의 시작, 메타 로테이션",
+        "summary": "",
+        "postId": "10874",
+        "category": "dev_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-07 08:05:16",
+        "displayTime": "2026-08-07 08:04:47",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260807/GAV4TYf0.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260807/GAV4TYf0_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10874"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (07/27~08/02)",
+        "summary": "",
+        "postId": "10847",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-08-04 04:51:33",
+        "displayTime": "2026-08-05 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260804/XYh2OZi9.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260804/XYh2OZi9_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10847"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (07/20~07/26)",
+        "summary": "",
+        "postId": "10789",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-28 06:29:27",
+        "displayTime": "2026-07-29 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260728/RFMtjLN6.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260728/RFMtjLN6_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10789"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (07/13~07/19)",
+        "summary": "",
+        "postId": "10523",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-22 06:04:11",
+        "displayTime": "2026-07-22 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260722/ZgysOZFF.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260722/ZgysOZFF_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10523"
+    },
+    {
+        "title": "계정 도용 피해 제재 해제 정책 개선 적용 안내",
+        "summary": "",
+        "postId": "10505",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-20 11:59:35",
+        "displayTime": "2026-07-21 05:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260720/w6g1NIUw.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260720/w6g1NIUw_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10505"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (07/06~07/12)",
+        "summary": "",
+        "postId": "10490",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-15 06:39:34",
+        "displayTime": "2026-07-15 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260715/SiW4tdxl.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260715/SiW4tdxl_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10490"
+    },
+    {
+        "title": "패치 노트 - 업데이트 42.2",
+        "summary": "업데이트 42.2에서 신규 기능 및 개선 사항을 만나보세요.",
+        "postId": "10459",
+        "category": "patch_notes",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-13 11:21:41",
+        "displayTime": "2026-07-14 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260713/PT4Q92HN.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260713/PT4Q92HN_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10459"
+    },
+    {
+        "title": "2026년 7월 상점 안내",
+        "summary": "2026년 7월 상점 안내에 오신 것을 환영합니다!",
+        "postId": "10427",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-14 02:38:49",
+        "displayTime": "2026-07-14 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260714/hwnk3WLG.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260714/hwnk3WLG_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10427"
+    },
+    {
+        "title": "맵 서비스 리포트 - 업데이트 42.2",
+        "summary": "",
+        "postId": "10415",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-13 12:49:02",
+        "displayTime": "2026-07-14 06:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260713/lFIBMzFh.png",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260713/lFIBMzFh_thumb.png",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10415"
+    },
+    {
+        "title": "PUBG: BATTLEGROUNDS 주간 제재 현황 안내 (06/29~07/05)",
+        "summary": "",
+        "postId": "10405",
+        "category": "notice",
+        "labels": [
+            "label_pc",
+            "label_console"
+        ],
+        "createdAt": "2026-07-08 06:56:01",
+        "displayTime": "2026-07-08 07:00:00",
+        "imageUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260708/8jFHLBgb.jpg",
+        "thumbUrl": "https://wstatic-prod-boc.krafton.com/common/content/news/20260708/8jFHLBgb_thumb.jpg",
+        "source": "官网 · PC / 主机",
+        "newsUrl": "https://pubg.com/ko/news/10405"
     }
 ]
