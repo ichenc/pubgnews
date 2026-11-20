@@ -2,10 +2,10 @@ name = "pubgnews-scheduler"
 main = "worker.js"
 compatibility_date = "2026-01-01"
 
-# Cloudflare Cron Triggers 按 UTC 计时；*/5 即每 5 分钟触发一次。
+# Cloudflare Cron Triggers 按 UTC 计时；*/2 即每 2 分钟触发一次。
 # 这是「准时层」，用于绕开 GitHub Actions schedule 被限流到数小时的排队问题。
 [triggers]
-crons = ["*/5 * * * *"]
+crons = ["*/2 * * * *"]
 
 # 打开可观测性，方便在控制台/接口里查看每次 cron 的日志与报错
 [observability]

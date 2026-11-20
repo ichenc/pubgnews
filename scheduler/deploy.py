@@ -9,7 +9,7 @@
     export GH_TOKEN=ghp_xxxx                # GitHub 令牌（repo + workflow）
     python deploy.py
 
-会依次完成：校验令牌 → 上传 Worker → 写入 GH_TOKEN 密钥 → 设置每 5 分钟 Cron。
+会依次完成：校验令牌 → 上传 Worker → 写入 GH_TOKEN 密钥 → 设置每 2 分钟 Cron。
 """
 
 import json
@@ -23,7 +23,7 @@ except ImportError:
 
 CF_API = "https://api.cloudflare.com/client/v4"
 SCRIPT_NAME = "pubgnews-scheduler"
-CRON = os.getenv("CRON", "*/5 * * * *")
+CRON = os.getenv("CRON", "*/2 * * * *")
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 

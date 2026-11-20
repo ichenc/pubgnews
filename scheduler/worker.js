@@ -1,4 +1,4 @@
-// Cloudflare Worker：每 5 分钟通过 repository_dispatch 触发 pubgnews 工作流。
+// Cloudflare Worker：每 2 分钟通过 repository_dispatch 触发 pubgnews 工作流。
 //
 // 为什么需要它：
 //   GitHub Actions 的 schedule 是「尽力而为」排队，本仓库实测被限流到每 3~10 小时

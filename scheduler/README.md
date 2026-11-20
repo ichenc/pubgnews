@@ -1,14 +1,14 @@
 # 准时触发器（Cloudflare Worker）
 
-## 当前部署状态（2026-11-12）
+## 当前部署状态（2026-11-21 更新为每 2 分钟）
 
 | 项目 | 值 |
 |---|---|
 | Worker 名称 | `pubgnews-scheduler` |
 | 访问地址 | https://pubgnews-scheduler.cxue0114.workers.dev |
-| Cron | `*/5 * * * *`（每 5 分钟，UTC 计时） |
+| Cron | `*/2 * * * *`（每 2 分钟，UTC 计时） |
 | 密钥 | `GH_TOKEN`（已写入 Cloudflare Secret，不在仓库中） |
-| 实测结果 | 2026-11-12 10:50:37 UTC 自动触发 → 工作流 `repository_dispatch` 运行成功 |
+| 实测结果 | 每 5 分钟一轮时，39 个触发间隔全部为 5.0 分钟；单次运行 12~28 秒；新闻发布到推送实测 0.8~11 分钟 |
 
 ## 为什么需要它
 
@@ -16,7 +16,7 @@ GitHub Actions 的 `schedule` 是**尽力而为**：高峰期会整批延迟，�
 本项目实测（2026-11-05 ~ 11-12）虽然 `cron` 写的是每 15 分钟，实际**每 3~10 小时才跑一次**，
 这才是「推送延迟太高」的根本原因——不是脚本抓取慢，而是任务根本没被及时调度。
 
-本目录的 Worker 用 Cloudflare 的 Cron Trigger **每 5 分钟**调用一次 GitHub 的
+本目录的 Worker 用 Cloudflare 的 Cron Trigger **每 2 分钟**调用一次 GitHub 的
 `repository_dispatch` 接口。`dispatch` 不经过 GitHub 的 cron 排队，通常**秒级入队**，
 于是工作流能在分钟级被准时拉起；仓库里的 `schedule` 只作为「外部定时器失效」时的兜底。
 
@@ -37,7 +37,7 @@ npx wrangler login
 # 2) 写入 GitHub 令牌（粘贴你的 PAT；不会进入代码库）
 npx wrangler secret put GH_TOKEN
 
-# 3) 部署（自动按 wrangler.toml 里的 crons 设置每 5 分钟触发）
+# 3) 部署（自动按 wrangler.toml 里的 crons 设置每 2 分钟触发）
 npx wrangler deploy
 ```
 
@@ -61,16 +61,16 @@ export GH_TOKEN=ghp_xxxx
 python deploy.py
 ```
 
-脚本会依次完成：校验令牌 → 上传 Worker → 写入 `GH_TOKEN` 密钥 → 设置每 5 分钟 Cron。
+脚本会依次完成：校验令牌 → 上传 Worker → 写入 `GH_TOKEN` 密钥 → 设置每 2 分钟 Cron。
 
 ---
 
 ## 验证
 
 1. 部署后在 Cloudflare 控制台 **Workers & Pages → pubgnews-scheduler → Triggers** 能看到
-   `*/5 * * * *`。
+   `*/2 * * * *`。
 2. 打开仓库 **Actions → PUBG News**，应能看到由 `repository_dispatch` 触发的运行，
-   且频率变为约每 5 分钟一次。
+   且频率变为约每 2 分钟一次。
 3. 想调整频率：改 `wrangler.toml` 的 `crons` 后重新部署；或用方式 B 时改 `deploy.py`
    顶部 `CRON` 常量。
 

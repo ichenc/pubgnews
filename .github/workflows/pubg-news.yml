@@ -1,7 +1,7 @@
 name: PUBG News
 
 # 定时架构（延迟根治方案，详见 README「定时与延迟」）
-#   * 准时层：Cloudflare Worker 每 5 分钟通过 repository_dispatch 触发本工作流。
+#   * 准时层：Cloudflare Worker 每 2 分钟通过 repository_dispatch 触发本工作流。
 #     dispatch 不经过 GitHub 的 schedule 队列，通常秒级入队。
 #   * 兜底层：下面的 schedule 是「尽力而为」，实测会被 GitHub 限流到每 3~10 小时一次，
 #     仅用于外部定时器失效时兜底，不保证准时。
@@ -52,7 +52,7 @@ jobs:
           set -uo pipefail
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add news_*.json pubg_status_state.json 2>/dev/null || true
+          git add news_*.json pubg_status_state.json pubg_news_state.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No news updates to commit."
             exit 0
