@@ -1,10 +1,10 @@
 {
   "pc": {
-    "maintenance": 0,
-    "server_status": 0,
-    "client_version": ""
+    "maintenance": 1,
+    "server_status": 1,
+    "client_version": "2611.1.2.7"
   },
-  "updated_at": "2026-11-23T20:54:31Z",
+  "updated_at": "2026-11-23T20:56:34Z",
   "online_history": [
     {
       "t": "2026-11-23 05:47",
@@ -107,13 +107,5 @@
     "maintenance": 1,
     "server_status": 1
   },
-  "pending": {
-    "candidate": {
-      "maintenance": 0,
-      "server_status": 0
-    },
-    "count": 1,
-    "since": "2026-11-24 04:54:46"
-  },
-  "saved_at": "2026-11-24 04:54:46"
+  "saved_at": "2026-11-24 04:56:50"
 }
